@@ -5,49 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\assets\img\faces\**" />
+    <Compile Remove="wwwroot\assets\img\flags\**" />
+    <Content Remove="wwwroot\assets\img\faces\**" />
+    <Content Remove="wwwroot\assets\img\flags\**" />
+    <EmbeddedResource Remove="wwwroot\assets\img\faces\**" />
+    <EmbeddedResource Remove="wwwroot\assets\img\flags\**" />
+    <None Remove="wwwroot\assets\img\faces\**" />
+    <None Remove="wwwroot\assets\img\flags\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\assets\css\material-dashboard.css" />
     <None Include="wwwroot\assets\css\material-dashboard.css.map" />
     <None Include="wwwroot\assets\css\material-dashboard.min.css" />
     <None Include="wwwroot\assets\demo\demo.css" />
     <None Include="wwwroot\assets\demo\demo.js" />
-    <None Include="wwwroot\assets\img\apple-icon.png" />
-    <None Include="wwwroot\assets\img\bg-pricing.jpg" />
-    <None Include="wwwroot\assets\img\bg3.jpg" />
-    <None Include="wwwroot\assets\img\bg9.jpg" />
-    <None Include="wwwroot\assets\img\card-1.jpeg" />
-    <None Include="wwwroot\assets\img\card-1.jpg" />
-    <None Include="wwwroot\assets\img\card-2.jpeg" />
-    <None Include="wwwroot\assets\img\card-2.jpg" />
-    <None Include="wwwroot\assets\img\card-3.jpeg" />
-    <None Include="wwwroot\assets\img\card-3.jpg" />
-    <None Include="wwwroot\assets\img\clint-mckoy.jpg" />
     <None Include="wwwroot\assets\img\default-avatar.png" />
-    <None Include="wwwroot\assets\img\faces\avatar.jpg" />
-    <None Include="wwwroot\assets\img\faces\card-profile1-square.jpg" />
-    <None Include="wwwroot\assets\img\faces\card-profile2-square.jpg" />
-    <None Include="wwwroot\assets\img\faces\marc.jpg" />
-    <None Include="wwwroot\assets\img\favicon.png" />
-    <None Include="wwwroot\assets\img\flags\AU.png" />
-    <None Include="wwwroot\assets\img\flags\BR.png" />
-    <None Include="wwwroot\assets\img\flags\DE.png" />
-    <None Include="wwwroot\assets\img\flags\GB.png" />
-    <None Include="wwwroot\assets\img\flags\RO.png" />
-    <None Include="wwwroot\assets\img\flags\US.png" />
-    <None Include="wwwroot\assets\img\header-doc.jpg" />
-    <None Include="wwwroot\assets\img\image_placeholder.jpg" />
-    <None Include="wwwroot\assets\img\lock.jpg" />
     <None Include="wwwroot\assets\img\login.jpg" />
-    <None Include="wwwroot\assets\img\mask.png" />
-    <None Include="wwwroot\assets\img\new_logo.png" />
-    <None Include="wwwroot\assets\img\placeholder.jpg" />
-    <None Include="wwwroot\assets\img\product1.jpg" />
-    <None Include="wwwroot\assets\img\product2.jpg" />
-    <None Include="wwwroot\assets\img\product3.jpg" />
-    <None Include="wwwroot\assets\img\register.jpg" />
-    <None Include="wwwroot\assets\img\sidebar-1.jpg" />
-    <None Include="wwwroot\assets\img\sidebar-2.jpg" />
-    <None Include="wwwroot\assets\img\sidebar-3.jpg" />
-    <None Include="wwwroot\assets\img\sidebar-4.jpg" />
     <None Include="wwwroot\assets\js\core\bootstrap-material-design.min.js" />
     <None Include="wwwroot\assets\js\core\jquery.min.js" />
     <None Include="wwwroot\assets\js\core\popper.min.js" />
