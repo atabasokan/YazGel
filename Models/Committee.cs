@@ -2,5 +2,7 @@
 {
     public class Committee
     {
+        public int committeeId { get; set; }
+
     }
 }

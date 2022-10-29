@@ -6,7 +6,7 @@ namespace YazGel.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=Okan\\Okan;database=DerseVerse;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=yazgelkou.mssql.somee.com;database=yazgelkou; User Id=teyavuz_SQLLogin_1; Password=2tyf4vqku5; integrated security=false;");
         }
 
         public DbSet<Student> Students { get; set; }
