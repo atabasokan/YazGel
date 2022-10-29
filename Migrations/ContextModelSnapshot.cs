@@ -20,10 +20,8 @@ namespace YazGel.Migrations
 
             modelBuilder.Entity("YazGel.Models.Committee", b =>
                 {
-                    b.Property<int>("committeeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<int>("role")
                         .HasColumnType("int");
@@ -31,56 +29,54 @@ namespace YazGel.Migrations
                     b.Property<int>("teacherId")
                         .HasColumnType("int");
 
-                    b.HasKey("committeeId");
+                    b.HasKey("Id");
 
                     b.HasIndex("role");
-
-                    b.HasIndex("teacherId");
 
                     b.ToTable("Committees");
                 });
 
             modelBuilder.Entity("YazGel.Models.Role", b =>
                 {
-                    b.Property<int>("roleId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("roleName")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("roleId");
+                    b.HasKey("Id");
 
                     b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("YazGel.Models.Student", b =>
                 {
-                    b.Property<int>("studentId")
+                    b.Property<int>("tId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("No")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("role")
                         .HasColumnType("int");
 
-                    b.Property<int>("studentGender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("studentName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("studentNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("studentPass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("studentSurname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("studentId");
+                    b.HasKey("tId");
 
                     b.HasIndex("role");
 
@@ -89,30 +85,30 @@ namespace YazGel.Migrations
 
             modelBuilder.Entity("YazGel.Models.Supervisor", b =>
                 {
-                    b.Property<int>("supervisorId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("No")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("role")
                         .HasColumnType("int");
 
-                    b.Property<int>("supervisorGender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("supervisorName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("supervisorNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("supervisorPass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("supervisorSurname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("supervisorId");
+                    b.HasKey("Id");
 
                     b.HasIndex("role");
 
@@ -121,33 +117,33 @@ namespace YazGel.Migrations
 
             modelBuilder.Entity("YazGel.Models.Teacher", b =>
                 {
-                    b.Property<int>("teacherId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("No")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Type")
+                        .HasColumnType("bit");
+
                     b.Property<int>("role")
                         .HasColumnType("int");
 
-                    b.Property<int>("teacherGender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("teacherName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("teacherNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("teacherPass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("teacherSurname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("teacherType")
-                        .HasColumnType("int");
-
-                    b.HasKey("teacherId");
+                    b.HasKey("Id");
 
                     b.HasIndex("role");
 
@@ -156,14 +152,14 @@ namespace YazGel.Migrations
 
             modelBuilder.Entity("YazGel.Models.Committee", b =>
                 {
+                    b.HasOne("YazGel.Models.Teacher", "tId")
+                        .WithMany("tId")
+                        .HasForeignKey("Id")
+                        .IsRequired();
+
                     b.HasOne("YazGel.Models.Role", "Role")
                         .WithMany("cId")
                         .HasForeignKey("role")
-                        .IsRequired();
-
-                    b.HasOne("YazGel.Models.Teacher", "tId")
-                        .WithMany("tId")
-                        .HasForeignKey("teacherId")
                         .IsRequired();
 
                     b.Navigation("Role");

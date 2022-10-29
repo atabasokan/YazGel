@@ -10018,7 +10018,7 @@ label {
 /*           Animations              */
 .animation-transition-general, .sidebar .sidebar-wrapper > .nav [data-toggle="collapse"] ~ div > ul > li > a span,
 .sidebar .sidebar-wrapper .user .user-info [data-toggle="collapse"] ~ div > ul > li > a span, .sidebar .nav p, .sidebar .logo a.logo-mini,
-.sidebar .logo a.logo-normal, .sidebar .user .photo, .sidebar .user .user-info > a > span, .login-page .card-login, .lock-page .card-profile {
+.sidebar .logo a.logo-normal, .sidebar .user .photo, .sidebar .user .user-info > a > span, .login-page .card-login, .lock-page .card-profile, .signup-page .card-signup {
   transition: all 300ms linear; }
 
 .animation-transition-slow {

@@ -13,8 +13,8 @@ namespace YazGel.Models
         {
             modelBuilder.Entity<Committee>()
                 .HasOne(x => x.tId)
-                .WithMany(y => y.tId)
-                .HasForeignKey(z => z.teacherId)
+                .WithMany(y => y.teacherId)
+                .HasForeignKey(z => z.Id)
                 .OnDelete(DeleteBehavior.ClientSetNull);
             modelBuilder.Entity<Student>()
                 .HasOne(x => x.Role)
