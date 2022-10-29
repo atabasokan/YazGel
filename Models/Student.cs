@@ -1,4 +1,5 @@
 ﻿using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YazGel.Models
 {
@@ -11,5 +12,7 @@ namespace YazGel.Models
         public string studentPass { get; set; }
         public Gender studentGender { get; set; }
         public int role { get; set; }
+        public Role Role { get; set; }
+
     }
 }

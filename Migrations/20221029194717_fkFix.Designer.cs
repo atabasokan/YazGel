@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YazGel.Models;
 
 namespace YazGel.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20221029194717_fkFix")]
+    partial class fkFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,6 +32,12 @@ namespace YazGel.Migrations
 
                     b.Property<int>("teacherId")
                         .HasColumnType("int");
+
+                    b.Property<string>("teacherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("teacherSurname")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("committeeId");
 
