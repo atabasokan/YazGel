@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YazGel.Models;
 
 namespace YazGel.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20221029185941_fkTry")]
+    partial class fkTry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,17 +27,7 @@ namespace YazGel.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("role")
-                        .HasColumnType("int");
-
-                    b.Property<int>("teacherId")
-                        .HasColumnType("int");
-
                     b.HasKey("committeeId");
-
-                    b.HasIndex("role");
-
-                    b.HasIndex("teacherId");
 
                     b.ToTable("Committees");
                 });
@@ -94,9 +86,6 @@ namespace YazGel.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("role")
-                        .HasColumnType("int");
-
                     b.Property<int>("supervisorGender")
                         .HasColumnType("int");
 
@@ -114,8 +103,6 @@ namespace YazGel.Migrations
 
                     b.HasKey("supervisorId");
 
-                    b.HasIndex("role");
-
                     b.ToTable("Supervisors");
                 });
 
@@ -125,9 +112,6 @@ namespace YazGel.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<int>("role")
-                        .HasColumnType("int");
 
                     b.Property<int>("teacherGender")
                         .HasColumnType("int");
@@ -149,72 +133,18 @@ namespace YazGel.Migrations
 
                     b.HasKey("teacherId");
 
-                    b.HasIndex("role");
-
                     b.ToTable("Teachers");
-                });
-
-            modelBuilder.Entity("YazGel.Models.Committee", b =>
-                {
-                    b.HasOne("YazGel.Models.Role", "Role")
-                        .WithMany("cId")
-                        .HasForeignKey("role")
-                        .IsRequired();
-
-                    b.HasOne("YazGel.Models.Teacher", "tId")
-                        .WithMany("tId")
-                        .HasForeignKey("teacherId")
-                        .IsRequired();
-
-                    b.Navigation("Role");
-
-                    b.Navigation("tId");
                 });
 
             modelBuilder.Entity("YazGel.Models.Student", b =>
                 {
                     b.HasOne("YazGel.Models.Role", "Role")
-                        .WithMany("sId")
+                        .WithMany()
                         .HasForeignKey("role")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("YazGel.Models.Supervisor", b =>
-                {
-                    b.HasOne("YazGel.Models.Role", "Role")
-                        .WithMany("svId")
-                        .HasForeignKey("role")
-                        .IsRequired();
-
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("YazGel.Models.Teacher", b =>
-                {
-                    b.HasOne("YazGel.Models.Role", "Role")
-                        .WithMany("tId")
-                        .HasForeignKey("role")
-                        .IsRequired();
-
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("YazGel.Models.Role", b =>
-                {
-                    b.Navigation("cId");
-
-                    b.Navigation("sId");
-
-                    b.Navigation("svId");
-
-                    b.Navigation("tId");
-                });
-
-            modelBuilder.Entity("YazGel.Models.Teacher", b =>
-                {
-                    b.Navigation("tId");
                 });
 #pragma warning restore 612, 618
         }
