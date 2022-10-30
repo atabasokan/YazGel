@@ -37,7 +37,7 @@ namespace YazGel.Controllers
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, t.No)
+                    new Claim(ClaimTypes.Name, infot.Name + " " + infot.Surname )
                 };
                 var useridentity = new ClaimsIdentity(claims, "Login");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
