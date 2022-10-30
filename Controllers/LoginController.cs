@@ -26,7 +26,7 @@ namespace YazGel.Controllers
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, s.No)
+                    new Claim(ClaimTypes.Name, infos.Name + " " + infos.Surname )
                 };
                 var useridentity = new ClaimsIdentity(claims, "Login");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
@@ -36,10 +36,11 @@ namespace YazGel.Controllers
             var infot = cdb.Teachers.FirstOrDefault(x => x.No == t.No && x.Pass == t.Pass );
             if (infot != null)
             {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, infot.Name + " " + infot.Surname )
-                };
+                var claims = new List<Claim>();
+                claims.Add(new Claim(ClaimTypes.Name, infot.Name));
+                claims.Add(new Claim(ClaimTypes.Surname, infot.Surname));
+                claims.Add(new Claim(ClaimTypes.UserData, infot.Pass));
+                claims.Add(new Claim(ClaimTypes.GivenName, infot.No));
                 var useridentity = new ClaimsIdentity(claims, "Login");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
                 await HttpContext.SignInAsync(principal);
@@ -57,7 +58,7 @@ namespace YazGel.Controllers
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, sv.No)
+                    new Claim(ClaimTypes.Name, infosv.Name + " " + infosv.Surname )
                 };
                 var useridentity = new ClaimsIdentity(claims, "Login");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
