@@ -18,8 +18,7 @@ namespace YazGel.Controllers
             return View();
         }
 
-
-        public async Task<IActionResult> Index(Student s,Teacher t, Committee c, Supervisor sv)
+        public async Task<IActionResult> Index(Student s,Teacher t,Supervisor sv)
         {
             var infos = cdb.Students.FirstOrDefault(x => x.No == s.No && x.Pass == s.Pass);
             if (infos != null)

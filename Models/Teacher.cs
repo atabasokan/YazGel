@@ -16,7 +16,6 @@ namespace YazGel.Models
         public string Pass { get; set; }
         public Gender Gender { get; set; }
         public bool Type { get; set; }
-        public virtual ICollection<Committee> teacherId{ get; set; }
 
         public int role { get; set; }
         public Role Role { get; set; }

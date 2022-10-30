@@ -12,7 +12,6 @@ namespace YazGel.Models
         public string Name { get; set; }
         public virtual ICollection<Student> sId { get; set; }
         public virtual ICollection<Teacher> tId { get; set; }
-        public virtual ICollection<Committee> cId { get; set; }
         public virtual ICollection<Supervisor> svId { get; set; }
     }
 }

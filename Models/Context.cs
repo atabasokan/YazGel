@@ -11,11 +11,6 @@ namespace YazGel.Models
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Committee>()
-                .HasOne(x => x.tId)
-                .WithMany(y => y.teacherId)
-                .HasForeignKey(z => z.Id)
-                .OnDelete(DeleteBehavior.ClientSetNull);
             modelBuilder.Entity<Student>()
                 .HasOne(x => x.Role)
                 .WithMany(y => y.sId)
@@ -26,11 +21,6 @@ namespace YazGel.Models
                 .WithMany(y => y.tId)
                 .HasForeignKey(z => z.role)
                 .OnDelete(DeleteBehavior.ClientSetNull);
-            modelBuilder.Entity<Committee>()
-                .HasOne(x => x.Role)
-                .WithMany(y => y.cId)
-                .HasForeignKey(z => z.role)
-                .OnDelete(DeleteBehavior.ClientSetNull);
             modelBuilder.Entity<Supervisor>()
                 .HasOne(x => x.Role)
                 .WithMany(y => y.svId)
@@ -39,7 +29,6 @@ namespace YazGel.Models
         }
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<Committee> Committees { get; set; }
         public DbSet<Supervisor> Supervisors { get; set; }
         public DbSet<Role> Roles { get; set; }
     }
