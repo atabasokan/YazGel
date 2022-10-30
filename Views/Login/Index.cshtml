@@ -47,7 +47,8 @@
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
                                             </div>
-                                            <input name="Pass" type="password" class="form-control" placeholder="Şifre..">
+                                            <input name="Pass" id="Pass" type="password" class="form-control" placeholder="Şifre..">
+                                            <input type="checkbox" onclick="myFunction()">Show Password
                                         </div>
                                     </span>
                                 </div>
@@ -102,7 +103,7 @@
                     }
 
                 }
-
+                
                 $('.fixed-plugin a').click(function (event) {
                     // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
                     if ($(this).hasClass('switch-trigger')) {
@@ -251,6 +252,17 @@
                 });
             });
         });
+    </script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("Pass");
+            if (x.type === "password") {
+                x.type = "text";
+            }
+            else {
+                x.type = "password";
+            }
+        }
     </script>
     <script>
         $(document).ready(function () {
