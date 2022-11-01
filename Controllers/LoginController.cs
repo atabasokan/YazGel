@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,12 @@ namespace YazGel.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Index(Student s,Teacher t,Supervisor sv)
+        public async Task<IActionResult> Index(Student s, Teacher t, Supervisor sv)
         {
             var infos = cdb.Students.FirstOrDefault(x => x.No == s.No && x.Pass == s.Pass);
             if (infos != null)
             {
+                HttpContext.Session.SetInt32("userRole", infos.role);
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, infos.Name + " " + infos.Surname )
@@ -33,9 +35,10 @@ namespace YazGel.Controllers
                 await HttpContext.SignInAsync(principal);
                 return RedirectToAction("Index", "Student");
             }
-            var infot = cdb.Teachers.FirstOrDefault(x => x.No == t.No && x.Pass == t.Pass );
+            var infot = cdb.Teachers.FirstOrDefault(x => x.No == t.No && x.Pass == t.Pass);
             if (infot != null)
             {
+                HttpContext.Session.SetInt32("userRole", infot.role);
                 var claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.Name, infot.Name));
                 claims.Add(new Claim(ClaimTypes.Surname, infot.Surname));
@@ -44,7 +47,7 @@ namespace YazGel.Controllers
                 var useridentity = new ClaimsIdentity(claims, "Login");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
                 await HttpContext.SignInAsync(principal);
-                if(infot.Type == true)
+                if (infot.Type == true)
                 {
                     return RedirectToAction("Index", "Committee");
                 }
@@ -56,6 +59,7 @@ namespace YazGel.Controllers
             var infosv = cdb.Supervisors.FirstOrDefault(x => x.No == sv.No && x.Pass == sv.Pass);
             if (infosv != null)
             {
+                HttpContext.Session.SetInt32("userRole", infosv.role);
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, infosv.Name + " " + infosv.Surname )

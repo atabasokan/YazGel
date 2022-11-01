@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace YazGel.Controllers
@@ -8,7 +9,15 @@ namespace YazGel.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return View();
+            var userRole = HttpContext.Session.GetInt32("userRole");
+            if (userRole != 2)
+            {
+                return RedirectToAction("LogOut", "Login");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
