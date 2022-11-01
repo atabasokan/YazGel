@@ -1,0 +1,57 @@
+﻿
+body {
+    background: linear-gradient(-45deg, #ee7752, #EEEEEE, #FFE1E1, #90A17D);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+.card {
+    background-color: #ffebb3;
+    width: 20rem;
+    height: 25rem;
+    margin: 5rem auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 5rem rgba(0,0,0,0.3);
+    transition: 0.4s;
+}
+
+.image {
+    border-radius: 1rem 1rem 0 0;
+    height: 10rem;
+    background-color: #829460;
+    background-size: 120%;
+    background-position: center;
+}
+
+.card:hover {
+    background-color: #ffd86b;
+    transform: translateY(-50px) rotate(-5deg);
+    box-shadow: 0 0 5rem rgba(0,0,0,0.5);
+}
+
+.content {
+    padding: 0 2rem;
+}
+
+h1 {
+    font-family: 'Libre Baskerville';
+}
+
+p {
+    font-family: 'Raleway';
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

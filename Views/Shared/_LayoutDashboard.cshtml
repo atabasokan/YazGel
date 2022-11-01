@@ -17,7 +17,69 @@
     <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
     <link href="../assets/demo/demo.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        body #pdf{
+        background: gray;
+        }
+
+      form{
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       margin-top: -100px;
+       margin-left: -250px;
+       width: 500px;
+       height: 200px;
+       border: 4px dashed #fff;
+       }
+
+       form   p{
+         width: 100%;
+         height: 100%;
+         text-align: center;
+         line-height: 170px;
+         color: #ffffff;
+         font-family: Arial;
+       }
+        form input{
+       position: absolute;
+       margin: 0;
+       padding: 0;
+       width: 100%;
+       height: 100%;
+       outline: none;
+       opacity: 0;
+       }
+
+         form button{
+         margin: 0;
+         color: #fff;
+         background: #16a085;
+         border: none;
+         width: 508px;
+         height: 35px;
+         margin-top: -20px;
+         margin-left: -4px;
+         border-radius: 4px;
+         border-bottom: 4px solid #117A60;
+         transition: all .2s ease;
+         outline: none;
+       }
+        form #buttonpdf button:hover{
+         background: #149174;
+       	color: #0C5645;
+       }
+        form #buttonpdf button:active{
+         border:0;
+       }
+    </style>
+
+
+
+
 </head>
+
 
 <body class="">
     <div class="wrapper ">
@@ -44,19 +106,16 @@
                         <div class="collapse" id="collapseExample">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span class="sidebar-mini"> <i class="material-icons" data-toggle="modal" data-target="#exampleModal">face</i> </span>
+                                    <a data-toggle="modal" data-target="#exampleModal" class="nav-link" href="#">
+                                        <span class="sidebar-mini"> <i class="material-icons">face</i> </span>
                                         <span class="sidebar-normal"> Kişisel Bilgiler </span>
                                     </a>
-                                    <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
-                                    </button>
-
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span class="sidebar-mini"> <i class="material-icons">settings</i> </span>
-                                        <span class="sidebar-normal"> Şifre Değiştir </span>
-                                    </a>
+                                   
+
+                                        <a class="nav-link" asp-area="" asp-controller="Student" asp-action="Info">  <i class="material-icons">settings</i> Şifre Değiştir </a>
+                                    
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/Login/LogOut">
@@ -68,7 +127,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Yan Menü -->
                 <ul class="nav">
                     <li class="nav-item active ">
@@ -354,11 +412,6 @@
                     <div class="collapse navbar-collapse justify-content-end">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="javascript:;">
-                                    <i class="material-icons">person4</i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="/Login/LogOut">
                                     <i class="material-icons">logout</i>
                                 </a>
@@ -370,48 +423,17 @@
             </nav>
             <!-- End Navbar -->
             <div class="content">
-                <div class="content">
+                
 
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Kişisel Bilgiler</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <h4>İsim:</h4>
-                                        <h6>@User.Claims.Where(w => w.Type == ClaimTypes.Name).Select(s => s.Value).SingleOrDefault();</h6>
-                                    </div>
-                                    <div class="row">
-                                        <h4>Soy İsim:</h4>
-                                        <h6>@User.Claims.Where(w => w.Type == ClaimTypes.Surname).Select(s => s.Value).SingleOrDefault();</h6>
-                                    </div>
-                                    <div class="row">
-                                        <h4>Numara:</h4>
-                                        <h6>@User.Claims.Where(w => w.Type == ClaimTypes.GivenName).Select(s => s.Value).SingleOrDefault();</h6>
-                                    </div>
-                                    <div class="row">
-                                        <h4>Şifre:</h4>
-                                        <h6>@User.Claims.Where(w => w.Type == ClaimTypes.UserData).Select(s => s.Value).SingleOrDefault();</h6>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
+ 
 
                     @RenderBody()
 
-                </div>
+
             </div>
+
         </div>
     </div>
 

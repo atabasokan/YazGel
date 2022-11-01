@@ -1,1 +1,18 @@
-﻿
+﻿@{
+    ViewBag.Title = "Öğrenci Portalı";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<form id="pdf" action="upload.php" method="POST">
+    <input id="pdfinput" type="file" multiple>
+    <p>Staj Dosyasını Yükleyin</p>
+    <button id="buttonpdf" type="submit">Yükle</button>
+</form>
+
+<script>
+    $(document).ready(function () {
+        $('form input').change(function () {
+            $('form p').text(this.files.length + " file(s) selected");
+        });
+    });
+</script>

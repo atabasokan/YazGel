@@ -5,10 +5,16 @@ namespace YazGel.Controllers
 {
     public class StudentController : Controller
     {
-        [Authorize]
+        //[Authorize]
         public IActionResult Index()
         {
             return View();
         }
+
+        public IActionResult Info()
+        {
+            return View();
+        }
+
     }
 }
