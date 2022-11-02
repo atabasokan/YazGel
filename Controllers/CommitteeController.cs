@@ -20,5 +20,10 @@ namespace YazGel.Controllers
                 return View();
             }
         }
+
+        public async Task<IActionResult> Info()
+        {
+            return View();
+        }
     }
 }
