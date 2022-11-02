@@ -12,6 +12,7 @@ namespace YazGel.Controllers
         public async Task<IActionResult> Index()
         {
             var userRole = HttpContext.Session.GetInt32("userRole");
+            ViewBag.UserRole = userRole;
             if (userRole != 3)
             {
                 return RedirectToAction("LogOut", "Login");

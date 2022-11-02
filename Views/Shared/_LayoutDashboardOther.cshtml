@@ -77,7 +77,7 @@
        }
     </style>
 
-
+  
 
 
 </head>
@@ -109,6 +109,12 @@
                         <div class="collapse" id="collapseExample">
                             <ul class="nav">
                                 <li class="nav-item">
+                                    <a data-toggle="modal" data-target="#exampleModal" class="nav-link" href="#">
+                                        <span class="sidebar-mini"> <i class="material-icons">face</i> </span>
+                                        <span class="sidebar-normal"> Kişisel Bilgiler </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                    
 
                                         <a class="nav-link" asp-area="" asp-controller="Student" asp-action="Info">  <i class="material-icons">settings</i> Şifre Değiştir </a>
@@ -125,58 +131,6 @@
                     </div>
                 </div>
                 <!-- Yan Menü -->
-                <ul class="nav" id="student_menu">
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğrenci </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğrenci </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğrenci </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğrenci </p>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="nav" id="teacher_menu">
-                    <li class="nav-item active " id="teacher_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğretmen </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> öğretmen </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğretmen </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğretmen </p>
-                        </a>
-                    </li>
-                </ul>
                 <ul class="nav" id="supervisor_menu">
                     <li class="nav-item active " id="teacher_menu">
                         <a class="nav-link" href="../examples/dashboard.html">
@@ -298,19 +252,7 @@
 
 
                 var session = @ViewBag.UserRole;
-                if (session == 4) {                    
-                    document.getElementById("teacher_menu").style.display = 'none';
-                    document.getElementById("supervisor_menu").style.display = 'none';
-                }
-                else if (session == 3) {
 
-                    document.getElementById("student_menu").style.display = 'none';
-                    document.getElementById("supervisor_menu").style.display = 'none';
-                }
-                else if (session == 2) {
-                    document.getElementById("teacher_menu").style.display = 'none';
-                    document.getElementById("student_menu").style.display = 'none';
-                }
                 $sidebar = $('.sidebar');
 
                 $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -489,11 +431,6 @@
 
         });
     </script>
-    $(document).ready(function () {
-            $('#pdfinput').change(function () {
-                $('form p').text(this.files.length + " file(s) selected");
-            });
-        });
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
