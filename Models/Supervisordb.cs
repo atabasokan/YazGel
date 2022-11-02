@@ -32,5 +32,64 @@ namespace YazGel.Models
                 return (ex.Message.ToString());
             }
         }
+        public string SaveRecord(Teacher tch)
+        {
+
+            try
+            {
+                SqlCommand com = new SqlCommand("Add_NewTeacher", con);
+
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Name", tch.Name);
+                com.Parameters.AddWithValue("@Surname", tch.Surname);
+                com.Parameters.AddWithValue("@No", tch.No);
+                com.Parameters.AddWithValue("@Pass", tch.Pass);
+                com.Parameters.AddWithValue("@Gender", tch.Gender);
+                com.Parameters.AddWithValue("@Role", "3");
+                com.Parameters.AddWithValue("@Type",tch.Type);
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+                return ("Ok");
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                return (ex.Message.ToString());
+            }
+        }
+        public string SaveSupervisor(Supervisor sv)
+        {
+
+            try
+            {
+                SqlCommand com = new SqlCommand("Add_NewSupervisor", con);
+
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Name", sv.Name);
+                com.Parameters.AddWithValue("@Surname", sv.Surname);
+                com.Parameters.AddWithValue("@No", sv.No);
+                com.Parameters.AddWithValue("@Pass", sv.Pass);
+                com.Parameters.AddWithValue("@Gender", sv.Gender);
+                com.Parameters.AddWithValue("@Role", sv.role);
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+                return ("Ok");
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                return (ex.Message.ToString());
+            }
+        }
+
+
     }
 }

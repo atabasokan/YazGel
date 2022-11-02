@@ -1,4 +1,4 @@
-﻿@model YazGel.Models.Teacher
+﻿@model YazGel.Models.Supervisor
 @{
     ViewBag.Title = "Yönetici Portalı";
     Layout = "~/Views/Shared/_LayoutDashboardSupervisor.cshtml";
@@ -9,14 +9,14 @@
 
 <div class="container">
     <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Öğretmen Ekle</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Yönetici Ekle</h4>
     </div>
     <div class="card-body">
         <div class="tab-content">
             <div class="tab-pane active" id="about">
                 <div class="row justify-content-center">
                     <div class="col-sm-4">
-                        @using (Html.BeginForm("AddTeacher", "Supervisor", FormMethod.Post, new { enctype = "multipart/form-daya" }))
+                        @using (Html.BeginForm("AddSupervisor", "Supervisor", FormMethod.Post, new { enctype = "multipart/form-daya" }))
                         {
                             <div class="form-group has-default">
                                 <div class="input-group form-control-lg">
@@ -43,19 +43,6 @@
                                         <input asp-for="Surname" type="text" class="form-control" id="Surname" name="Surname" required="" aria-required="true">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="input-group input-group-static form-control-lg">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text mb-4">
-                                        <i class="material-icons">groups</i>
-                                    </span>
-                                </div>
-
-                                <select asp-for="Type" class="form-control dropdown-toggle" id="exampleFormControlSelect1" title="Type" autocomplete="off">
-                                    <option disabled selected active>Rol</option>
-                                    <option value="false">Öğretmen</option>
-                                    <option value="true">Komisyon</option>
-                                </select>
                             </div>
                             <div class="input-group input-group-static form-control-lg">
                                 <div class="input-group-prepend">

@@ -10,7 +10,7 @@ namespace YazGel.Models
 
         SqlConnection con = new SqlConnection("server=yazgelkou.mssql.somee.com;database=yazgelkou; User Id=teyavuz_SQLLogin_1; Password=2tyf4vqku5; integrated security=false;");
             
-        public string SaveRevord (Student stn)
+        public string SaveRecord (Student stn)
         {
 
             try

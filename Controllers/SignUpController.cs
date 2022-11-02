@@ -44,7 +44,7 @@ namespace YazGel.Controllers
                     stn.No = no;
                     string Pass = GetRandomAlphanumericString();
                     stn.Pass = Pass;
-                    string res = dbop.SaveRevord(stn);
+                    string res = dbop.SaveRecord(stn);
 
                     string mailBody = "<!DOCTYPE html>" +
                                         "<html>" +
