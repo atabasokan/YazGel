@@ -49,5 +49,10 @@ namespace YazGel.Controllers
             return View();
         }
 
+        public async Task<IActionResult> TimeLine()
+        {
+            return View();
+        }
+
     }
 }

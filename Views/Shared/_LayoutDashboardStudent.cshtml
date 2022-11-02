@@ -58,6 +58,13 @@
                         <div class="collapse" id="collapseExample">
                             <ul class="nav">
                                 <li class="nav-item">
+
+
+                                    <a class="nav-link" asp-area="" asp-controller="Student" asp-action="Index">  <i class="material-icons">domain</i> Anasayfa </a>
+
+                                </li>
+
+                                <li class="nav-item">
                                    
 
                                         <a class="nav-link" asp-area="" asp-controller="Student" asp-action="Info">  <i class="material-icons">settings</i> Şifre Değiştir </a>
@@ -76,9 +83,9 @@
                 <!-- Yan Menü -->
                 <ul class="nav" id="student_menu">
                     <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğrenci </p>
+                        <a class="nav-link" asp-area="" asp-controller="Student" asp-action="TimeLine">
+                            <i class="material-icons">loop</i>
+                            <p> Staj Durumu </p>
                         </a>
                     </li>
                     <li class="nav-item active " id="student_menu">
