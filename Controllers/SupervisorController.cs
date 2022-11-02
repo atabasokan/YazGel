@@ -39,7 +39,7 @@ namespace YazGel.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    string res = dbop.UpdatePassword(sv);
+                    string res = dbop.UpdatePasswordSv(sv);
                 }
 
             }

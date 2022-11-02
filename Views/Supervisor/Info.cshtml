@@ -58,7 +58,7 @@
                         </div>
                         <div class="d-flex justify-content-center">
                             <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalLong">Sifreyi değistir</button>
-                            @using (Html.BeginForm("Info", "Student", FormMethod.Post, new { enctype = "multipart/form-daya" }))
+                            @using (Html.BeginForm("Info", "Supervisor", FormMethod.Post, new { enctype = "multipart/form-daya" }))
                             {
                                 <div class="form-group has-default">
                                     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -76,9 +76,6 @@
 
                                                     <label for="newPass" class="bmd-label-floating">Yeni Şifre</label>
                                                     <input asp-for="NewPass" type="password" class="form-control" id="newPass" required="" aria-required="true">
-
-                                                    <label for="confirmPass" class="bmd-label-floating">Şifre Onay</label>
-                                                    <input asp-for="ConfirmPass" type="password" class="form-control" id="confirmPass" required="" aria-required="true">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <input type="button" class="btn btn-outline-dark" id="btn_show" onclick="myFunction()" value="Şifre Gör">
