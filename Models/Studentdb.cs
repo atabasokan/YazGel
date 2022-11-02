@@ -38,5 +38,29 @@ namespace YazGel.Models
                 return (ex.Message.ToString());
             }
         }
+
+        public string UpdatePassword (ChangePass stn)
+        {
+            try
+            {
+                SqlCommand com = new SqlCommand("Update_Pass", con);
+
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@New_Pass", stn.NewPass);
+                com.Parameters.AddWithValue("@studentId", stn.studentId);
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+                return ("Ok");
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                return (ex.Message.ToString());
+            }
+        }
     }
 }

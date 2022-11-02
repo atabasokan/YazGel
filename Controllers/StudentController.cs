@@ -1,13 +1,18 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
+using YazGel.Models;
 
 namespace YazGel.Controllers
 {
     public class StudentController : Controller 
     {
-        //[Authorize]
+        Context cdb = new Context();
+        Studentdb dbop = new Studentdb();
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             
@@ -23,8 +28,24 @@ namespace YazGel.Controllers
             }
         }
 
-        public async Task<IActionResult> Info()
+        public async Task<IActionResult> Info([Bind] ChangePass stn)
         {
+            var stnId = HttpContext.Session.GetInt32("userId");
+            stn.studentId = (int)stnId;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    string res = dbop.UpdatePassword(stn);
+                }
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
             return View();
         }
 
