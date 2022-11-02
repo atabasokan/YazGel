@@ -2,11 +2,14 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using YazGel.Models;
 
 namespace YazGel.Controllers
 {
     public class CommitteeController : Controller
     {
+        Context cdb = new Context();
+        Teacherdb dbop = new Teacherdb();
         [Authorize]
         public async Task<IActionResult> Index()
         {
@@ -21,8 +24,24 @@ namespace YazGel.Controllers
             }
         }
 
-        public async Task<IActionResult> Info()
+        public async Task<IActionResult> Info([Bind]ChangePass tch)
         {
+            var Id = HttpContext.Session.GetInt32("userId");
+            tch.Id = (int)Id;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    string res = dbop.UpdatePasswordCom(tch);
+                }
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
             return View();
         }
     }

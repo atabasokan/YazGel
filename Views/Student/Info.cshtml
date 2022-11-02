@@ -58,7 +58,7 @@
                         </div>
                         <div class="d-flex justify-content-center">
                             <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalLong">Sifreyi değistir</button>
-                            @using (Html.BeginForm("Info", "Student", FormMethod.Post, new { enctype = "multipart/form-daya" }))
+                            @using (Html.BeginForm("Info", "Supervisor", FormMethod.Post, new { enctype = "multipart/form-daya" }))
                             {
                                 <div class="form-group has-default">
                                     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -81,7 +81,7 @@
                                                     <input asp-for="ConfirmPass" type="password" class="form-control" id="confirmPass" required="" aria-required="true">
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <input type="button" class="btn btn-outline-dark" id="btn_show" onclick="myFunction()" value="Şifre Gör">
+                                                    <input type="button" class="btn btn-outline-dark" id="btn_show" onclick="myFunction()" value="Şifre Göster">
                                                     <input type="submit" class="btn btn-outline-dark" value="Kaydet" />
                                                 </div>
                                             </div>

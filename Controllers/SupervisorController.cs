@@ -9,8 +9,10 @@ namespace YazGel.Controllers
 {
     public class SupervisorController : Controller
     {
-    [Authorize]
         Context cdb = new Context();
+        Supervisordb dbop = new Supervisordb();
+
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var userRole = HttpContext.Session.GetInt32("userRole");
@@ -28,8 +30,24 @@ namespace YazGel.Controllers
             }
         }
 
-        public async Task<IActionResult> Info()
+        public async Task<IActionResult> Info([Bind] ChangePass sv)
         {
+            var svId = HttpContext.Session.GetInt32("userId");
+            sv.Id = (int)svId;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    string res = dbop.UpdatePassword(sv);
+                }
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
             return View();
         }
 

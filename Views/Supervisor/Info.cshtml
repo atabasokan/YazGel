@@ -1,8 +1,8 @@
 ﻿@{
     ViewBag.Title = "Yönetici Portalı";
-    Layout = "~/Views/Shared/_LayoutDashboardSupervisor.cshtml";
+    Layout = "~/Views/Shared/_LayoutDashboardStudent.cshtml";
 }
-
+@model YazGel.Models.ChangePass
 <div class="container">
     <div class="modal-header text-center">
         <h4 class="modal-title w-100 font-weight-bold">Kişisel Bilgiler</h4>
@@ -58,32 +58,37 @@
                         </div>
                         <div class="d-flex justify-content-center">
                             <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalLong">Sifreyi değistir</button>
-                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Şifreyi Değiştir</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <label for="oldpass" class="bmd-label-floating">Şifreniz</label>
-                                            <input type="password" class="form-control" id="txtpwdold" name="password" required="" aria-required="true">
+                            @using (Html.BeginForm("Info", "Student", FormMethod.Post, new { enctype = "multipart/form-daya" }))
+                            {
+                                <div class="form-group has-default">
+                                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Şifreyi Değiştir</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <label for="currentPass" class="bmd-label-floating">Şifreniz</label>
+                                                    <input asp-for="CurrentPass" type="password" class="form-control" id="currentPass" required="" aria-required="true">
 
-                                            <label for="currentpass" class="bmd-label-floating">Yeni Şifre</label>
-                                            <input type="password" class="form-control" id="txtpwd" name="password" required="" aria-required="true">
+                                                    <label for="newPass" class="bmd-label-floating">Yeni Şifre</label>
+                                                    <input asp-for="NewPass" type="password" class="form-control" id="newPass" required="" aria-required="true">
 
-                                            <label for="currentpass" class="bmd-label-floating">Yeni Şifre Tekrar</label>
-                                            <input type="password" class="form-control" id="txtpwdconfirm" name="password" required="" aria-required="true">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-outline-dark">Kaydet</button>
+                                                    <label for="confirmPass" class="bmd-label-floating">Şifre Onay</label>
+                                                    <input asp-for="ConfirmPass" type="password" class="form-control" id="confirmPass" required="" aria-required="true">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="button" class="btn btn-outline-dark" id="btn_show" onclick="myFunction()" value="Şifre Gör">
+                                                    <input type="submit" class="btn btn-outline-dark" value="Kaydet" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            }
                         </div>
 
                     </div>
@@ -91,9 +96,34 @@
             </div>
         </div>
     </div>
-    <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-unique"> <i class="material-icons">send</i></button>
-
-    </div>
 </div>
 
+
+
+<script>
+    var x = document.getElementById("currentPass");
+    var y = document.getElementById("newPass");
+    var z = document.getElementById("confirmPass");
+    function myFunction() {
+        if (x.type === "password") {
+            x.type = "text";
+            y.type = "text";
+            z.type = "text";
+            document.getElementById("btn_show").value = "Şifre Gizle";
+        }
+        else {
+            x.type = "password";
+            y.type = "password";
+            z.type = "password";
+            document.getElementById("btn_show").value = "Şifre Göster";
+
+        }
+
+    }
+
+    function verifyPass() {
+        if (y != z) {
+
+        }
+    }
+</script>
