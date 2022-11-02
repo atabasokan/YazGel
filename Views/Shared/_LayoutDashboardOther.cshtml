@@ -77,7 +77,7 @@
        }
     </style>
 
-
+  
 
 
 </head>
@@ -131,58 +131,6 @@
                     </div>
                 </div>
                 <!-- Yan Menü -->
-                <ul class="nav" id="student_menu">
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğrenci </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğrenci </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğrenci </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğrenci </p>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="nav" id="teacher_menu">
-                    <li class="nav-item active " id="teacher_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğretmen </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> öğretmen </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğretmen </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Öğretmen </p>
-                        </a>
-                    </li>
-                </ul>
                 <ul class="nav" id="supervisor_menu">
                     <li class="nav-item active " id="teacher_menu">
                         <a class="nav-link" href="../examples/dashboard.html">
@@ -304,19 +252,7 @@
 
 
                 var session = @ViewBag.UserRole;
-                if (session == 4) {                    
-                    document.getElementById("teacher_menu").style.display = 'none';
-                    document.getElementById("supervisor_menu").style.display = 'none';
-                }
-                else if (session == 3) {
 
-                    document.getElementById("student_menu").style.display = 'none';
-                    document.getElementById("supervisor_menu").style.display = 'none';
-                }
-                else if (session == 2) {
-                    document.getElementById("teacher_menu").style.display = 'none';
-                    document.getElementById("student_menu").style.display = 'none';
-                }
                 $sidebar = $('.sidebar');
 
                 $sidebar_img_container = $sidebar.find('.sidebar-background');
