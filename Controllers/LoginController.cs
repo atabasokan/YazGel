@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -39,6 +40,8 @@ namespace YazGel.Controllers
             if (infot != null)
             {
                 HttpContext.Session.SetInt32("userRole", infot.role);
+                string type = (infot.Type).ToString();
+                HttpContext.Session.SetString("teacherType", type);
                 var claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.Name, infot.Name));
                 claims.Add(new Claim(ClaimTypes.Surname, infot.Surname));
