@@ -133,15 +133,15 @@
                 <!-- Yan Menü -->
                 <ul class="nav" id="supervisor_menu">
                     <li class="nav-item active " id="teacher_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Supervisor </p>
+                        <a class="nav-link" asp-area="" asp-controller="Supervisor" asp-action="AddTeacher">
+                            <i class="material-icons">add</i>
+                            <p> Öğretmen Ekle </p>
                         </a>
                     </li>
                     <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
-                            <i class="material-icons">dashboard</i>
-                            <p> Supervisor </p>
+                        <a class="nav-link" asp-area="" asp-controller="Supervisor" asp-action="TeachertoStudent">
+                            <i class="material-icons">air</i>
+                            <p> Öğretmene Ata </p>
                         </a>
                     </li>
                     <li class="nav-item active " id="student_menu">
