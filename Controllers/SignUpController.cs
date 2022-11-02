@@ -26,7 +26,7 @@ namespace YazGel.Controllers
         {
             configuration = IConfig;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }

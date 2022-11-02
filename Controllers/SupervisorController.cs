@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace YazGel.Controllers
 {
+    [Authorize]
     public class SupervisorController : Controller
     {
-    [Authorize]
         public async Task<IActionResult> Index()
         {
             var userRole = HttpContext.Session.GetInt32("userRole");
-            if (userRole != 1 || userRole != 2)
+            if (userRole != 1 && userRole != 2)
             {
                 return RedirectToAction("LogOut", "Login");
             }

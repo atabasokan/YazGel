@@ -16,7 +16,7 @@ namespace YazGel.Controllers
         Context cdb = new Context();
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }
