@@ -25,5 +25,15 @@ namespace YazGel.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> AddTeacher()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> TeachertoStudent()
+        {
+            return View();
+        }
     }
 }
