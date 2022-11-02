@@ -27,6 +27,7 @@ namespace YazGel.Controllers
             if (infos != null)
             {
                 HttpContext.Session.SetInt32("userRole", infos.role);
+                HttpContext.Session.SetInt32("userId", infos.Id);
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, infos.Name + " " + infos.Surname )
@@ -40,6 +41,7 @@ namespace YazGel.Controllers
             if (infot != null)
             {
                 HttpContext.Session.SetInt32("userRole", infot.role);
+                HttpContext.Session.SetInt32("userId", infot.Id);
                 string type = (infot.Type).ToString();
                 HttpContext.Session.SetString("teacherType", type);
                 var claims = new List<Claim>();
@@ -63,6 +65,8 @@ namespace YazGel.Controllers
             if (infosv != null)
             {
                 HttpContext.Session.SetInt32("userRole", infosv.role);
+                HttpContext.Session.SetInt32("userId", infosv.Id);
+
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, infosv.Name + " " + infosv.Surname )

@@ -7,9 +7,9 @@ using YazGel.Models;
 
 namespace YazGel.Controllers
 {
-    [Authorize]
     public class SupervisorController : Controller
     {
+    [Authorize]
         Context cdb = new Context();
         public async Task<IActionResult> Index()
         {
