@@ -10,7 +10,7 @@ using YazGel.Models;
 namespace YazGel.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20221103172307_Documents")]
+    [Migration("20221103181035_Documents")]
     partial class Documents
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -150,7 +150,7 @@ namespace YazGel.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("DocumentId")
+                    b.Property<int?>("DocumentId")
                         .HasColumnType("int");
 
                     b.Property<int?>("DocumentProgressId")
@@ -171,13 +171,13 @@ namespace YazGel.Migrations
                     b.Property<string>("Pass")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProgressId")
+                    b.Property<int?>("ProgressId")
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TeacherId")
+                    b.Property<int?>("TeacherId")
                         .HasColumnType("int");
 
                     b.Property<int>("role")
@@ -286,9 +286,7 @@ namespace YazGel.Migrations
 
                     b.HasOne("YazGel.Models.Teacher", "Teacher")
                         .WithMany("Students")
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TeacherId");
 
                     b.HasOne("YazGel.Models.Role", "Role")
                         .WithMany("sId")

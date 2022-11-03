@@ -15,11 +15,11 @@ namespace YazGel.Models
         public Gender Gender { get; set; }
         public int role { get; set; }
         public Role Role { get; set; }
-        public int ProgressId { get; set; }
+        public int? ProgressId { get; set; }
         public DocumentProgress DocumentProgress { get; set; }
-        public int TeacherId { get; set; }
+        public int? TeacherId { get; set; }
         public Teacher Teacher { get; set; }
-        public int DocumentId { get; set; }
+        public int? DocumentId { get; set; }
         public Documents Documents { get; set; }
 
     }
