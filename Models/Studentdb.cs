@@ -101,5 +101,29 @@ namespace YazGel.Models
                 return (ex.Message.ToString());
             }
         }
+        public string CreateDocument (Documents doc)
+        {
+            try
+            {
+                SqlCommand com = new SqlCommand("Document_Create", con);
+
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@InternshipId", doc.InternshipId);
+                com.Parameters.AddWithValue("@StudentId", doc.StudentId);
+                 
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+                return ("Ok");
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                return (ex.Message.ToString());
+            }
+        }
     }
 }

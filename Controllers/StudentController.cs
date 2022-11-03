@@ -61,12 +61,15 @@ namespace YazGel.Controllers
         [HttpPost]
         public async Task<IActionResult> stajBasvuruOlusturma([Bind] Internship intern)
         {
-
+            Documents doc = new Documents();
+            doc.InternshipId = (int)intern.Id;
+            doc.StudentId = (int)HttpContext.Session.GetInt32("userId");
             try
             {
                 if (ModelState.IsValid)
                 {
                     string res = dbop.CreateInternship(intern);
+                    string res2 = dbop.CreateDocument(doc);
                 }
             }
             catch (Exception ex)
