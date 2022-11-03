@@ -22,6 +22,17 @@
                             <th>Şifre</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.studentsListData)
+                        {
+                            <tr>
+                                <td class="text-center">@item.Id</td>
+                                <td>@item.Name @item.Surname</td>
+                                <td>@item.No</td>
+                                <td>@item.Pass</td>
+                            </tr>
+                        }
+                    </tbody>
 
                 </table>
             </div>
