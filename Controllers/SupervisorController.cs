@@ -176,13 +176,13 @@ namespace YazGel.Controllers
             {
                 TempData["msg"] = ex.Message;
             }
-            return RedirectToAction("Index", "Supervisor");
+            return RedirectToAction("EditStudent", "Supervisor");
         }
         public async Task<IActionResult> EditSupervisor()
         {
             var studentData = cdb.Students.ToList();
             var teacherData = cdb.Teachers.ToList();
-            var supervisorData = cdb.Supervisors.ToList();
+            var supervisorData = cdb.Supervisors.ToList().Where(w => w.role == 2);
             var userRole = HttpContext.Session.GetInt32("userRole");
             ViewBag.UserRole = userRole;
             if (userRole != 1 && userRole != 2)
@@ -201,7 +201,7 @@ namespace YazGel.Controllers
         {
             var studentData = cdb.Students.ToList();
             var teacherData = cdb.Teachers.ToList();
-            var supervisorData = cdb.Supervisors.ToList();
+            var supervisorData = cdb.Supervisors.ToList().Where(w => w.Id == 2);
             var userRole = HttpContext.Session.GetInt32("userRole");
             ViewBag.UserRole = userRole;
             if (userRole != 1 && userRole != 2)
@@ -220,7 +220,7 @@ namespace YazGel.Controllers
         {
             var studentData = cdb.Students.ToList();
             var teacherData = cdb.Teachers.ToList();
-            var supervisorData = cdb.Supervisors.ToList();
+            var supervisorData = cdb.Supervisors.ToList().Where(w => w.Id == 2);
             var userRole = HttpContext.Session.GetInt32("userRole");
             ViewBag.UserRole = userRole;
             if (userRole != 1 && userRole != 2)
