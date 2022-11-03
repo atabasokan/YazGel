@@ -1,4 +1,5 @@
 ﻿using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,8 +20,9 @@ namespace YazGel.Models
         public DocumentProgress DocumentProgress { get; set; }
         public int? TeacherId { get; set; }
         public Teacher Teacher { get; set; }
-        public int? DocumentId { get; set; }
-        public Documents Documents { get; set; }
+        public virtual ICollection<Documents> Documents{ get; set; }
+
+        public virtual ICollection<Internship> Internships { get; set; }
 
     }
 }

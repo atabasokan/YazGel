@@ -10,7 +10,7 @@ using YazGel.Models;
 namespace YazGel.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20221103181035_Documents")]
+    [Migration("20221103221033_Documents")]
     partial class Documents
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,9 +55,14 @@ namespace YazGel.Migrations
                     b.Property<string>("RecourseConfirm")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("InternshipId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Documents");
                 });
@@ -93,7 +98,7 @@ namespace YazGel.Migrations
                     b.Property<string>("ComPhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("End")
+                    b.Property<string>("EndDate")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("GSS")
@@ -117,6 +122,9 @@ namespace YazGel.Migrations
                     b.Property<string>("Start")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("StudentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
@@ -124,6 +132,8 @@ namespace YazGel.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Internship");
                 });
@@ -149,12 +159,6 @@ namespace YazGel.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<int?>("DocumentId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DocumentProgressId")
-                        .HasColumnType("int");
 
                     b.Property<int?>("DocumentsId")
                         .HasColumnType("int");
@@ -185,9 +189,9 @@ namespace YazGel.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DocumentProgressId");
-
                     b.HasIndex("DocumentsId");
+
+                    b.HasIndex("ProgressId");
 
                     b.HasIndex("TeacherId");
 
@@ -268,21 +272,34 @@ namespace YazGel.Migrations
                     b.HasOne("YazGel.Models.Internship", "Internship")
                         .WithMany("DocumentId")
                         .HasForeignKey("InternshipId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("YazGel.Models.Student", "Student")
+                        .WithMany("Documents")
+                        .HasForeignKey("StudentId")
                         .IsRequired();
 
                     b.Navigation("Internship");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("YazGel.Models.Internship", b =>
+                {
+                    b.HasOne("YazGel.Models.Student", null)
+                        .WithMany("Internships")
+                        .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("YazGel.Models.Student", b =>
                 {
-                    b.HasOne("YazGel.Models.DocumentProgress", "DocumentProgress")
-                        .WithMany("Students")
-                        .HasForeignKey("DocumentProgressId");
-
-                    b.HasOne("YazGel.Models.Documents", "Documents")
+                    b.HasOne("YazGel.Models.Documents", null)
                         .WithMany("Students")
                         .HasForeignKey("DocumentsId");
+
+                    b.HasOne("YazGel.Models.DocumentProgress", "DocumentProgress")
+                        .WithMany("Students")
+                        .HasForeignKey("ProgressId");
 
                     b.HasOne("YazGel.Models.Teacher", "Teacher")
                         .WithMany("Students")
@@ -294,8 +311,6 @@ namespace YazGel.Migrations
                         .IsRequired();
 
                     b.Navigation("DocumentProgress");
-
-                    b.Navigation("Documents");
 
                     b.Navigation("Role");
 
@@ -344,6 +359,13 @@ namespace YazGel.Migrations
                     b.Navigation("svId");
 
                     b.Navigation("tId");
+                });
+
+            modelBuilder.Entity("YazGel.Models.Student", b =>
+                {
+                    b.Navigation("Documents");
+
+                    b.Navigation("Internships");
                 });
 
             modelBuilder.Entity("YazGel.Models.Teacher", b =>

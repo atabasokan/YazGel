@@ -13,7 +13,7 @@ namespace YazGel.Models
         {
             try
             {
-                SqlCommand com = new SqlCommand("Update_Pass_T", con);
+                SqlCommand com = new SqlCommand("Update_Pass_Teacher", con);
 
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@New_Pass", tch.NewPass);
@@ -36,7 +36,7 @@ namespace YazGel.Models
         {
             try
             {
-                SqlCommand com = new SqlCommand("Update_Pass_C", con);
+                SqlCommand com = new SqlCommand("Update_Pass_Committee", con);
 
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@NewPass", tch.NewPass);

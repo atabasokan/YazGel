@@ -13,7 +13,7 @@ namespace YazGel.Models
         {
             try
             {
-                SqlCommand com = new SqlCommand("Update_Pass_Sv", con);
+                SqlCommand com = new SqlCommand("Update_Pass_Supervisor", con);
 
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@NewPass", sv.NewPass);
@@ -37,7 +37,7 @@ namespace YazGel.Models
 
             try
             {
-                SqlCommand com = new SqlCommand("Add_NewTeacher", con);
+                SqlCommand com = new SqlCommand("Add_New_Teacher", con);
 
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@Name", tch.Name);
@@ -66,7 +66,7 @@ namespace YazGel.Models
 
             try
             {
-                SqlCommand com = new SqlCommand("Delete_Supervisors", con);
+                SqlCommand com = new SqlCommand("Delete_Supervisor", con);
 
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("Id", sv.Id);
@@ -187,7 +187,7 @@ namespace YazGel.Models
         {
             try
             {
-                SqlCommand com = new SqlCommand("Edit_Teacher", con);
+                SqlCommand com = new SqlCommand("Edit_Student", con);
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@Name", stn.Name);
                 com.Parameters.AddWithValue("@Surname", stn.Surname);
@@ -214,7 +214,7 @@ namespace YazGel.Models
 
             try
             {
-                SqlCommand com = new SqlCommand("Add_NewSupervisor", con);
+                SqlCommand com = new SqlCommand("Add_New_Supervisor", con);
 
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@Name", sv.Name);
