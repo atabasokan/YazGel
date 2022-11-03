@@ -9,7 +9,7 @@
             <div class="card-icon">
                 <i class="material-icons">assignment</i>
             </div>
-            <h4 class="card-title">Notlandırılacak Öğrenciler</h4>
+            <h4 class="card-title">Notlandırılan Öğrenciler</h4>
         </div>
         <div class="card-body">
             <div class="material-datatables">
@@ -19,25 +19,18 @@
                             <th class="text-center">#</th>
                             <th>İsim - Soy İsim</th>
                             <th>Numara</th>
-                            <th>Notlandırma</th>
+                            <th>Not</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in ViewBag.studentsListData)
-                        {
+
                             <tr>
-                                <td class="text-center">@item.Id</td>
-                                <td>@item.Name @item.Surname</td>
-                                <td>@item.No</td>
-                                <td>
-                                    <div class="input-group">
-                                        <a type="button" rel="tooltip" id="#" class="btn btn-link btn-success btn-just-icon remove" data-toggle="tooltip" title="Onayla" href="#">
-                                            <i class="material-icons">noteadd</i>
-                                        </a>
-                                    </div>
-                                </td>
+                                <td class="text-center">#id</td>
+                                <td>isim soyisim</td>
+                                <td>111111</td>
+                                <td> Geçti </td>
                             </tr>
-                        }
+
                     </tbody>
 
                 </table>

@@ -55,5 +55,10 @@ namespace YazGel.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> NotlandirilanOgrenciler()
+        {
+            return View();
+        }
     }
 }
