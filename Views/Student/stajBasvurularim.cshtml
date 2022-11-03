@@ -3,5 +3,98 @@
     Layout = "~/Views/Shared/_LayoutDashboardStudent.cshtml";
 }
 
-<h1>stajBasvurularim</h1>
+<style>
+
+body {
+	background-color: #FFE1E1;
+    background-size: 400% 400%;
+    height: 100vh;
+}
+
+.card {
+    background-color: #ffebb3;
+    width: 20rem;
+    height: 25rem;
+    margin: 5rem auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 5rem rgba(0,0,0,0.3);
+    transition: 0.4s;
+}
+
+.image {
+    border-radius: 1rem 1rem 0 0;
+    height: 7rem;
+    background-color: #829460;
+    background-size: 120%;
+    background-position: center;
+}
+
+.card:hover {
+    background-color: #ffd86b;
+    transform: translateY(-50px) rotate(-5deg);
+    box-shadow: 0 0 5rem rgba(0,0,0,0.5);
+}
+
+.content {
+    padding: 0 2rem;
+}
+
+h1 {
+    font-family: 'Libre Baskerville';
+}
+
+p {
+    font-family: 'Raleway';
+}
+
+</style>
+
+<div class="d-flex flex-column justify-content-center w-100 h-100">
+
+	<div class="d-flex flex-column justify-content-center align-items-center">
+		<h1 class="fw-light text-green m-0">Belgeler</h1>
+
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="card">
+						<div class="image"></div>
+						<div class="content mt-5">
+							<h1>Yasin Çetin</h1>
+							<p>Staj Başvuru Belgesi.</p>
+							<div class="btn btn-outline dark">Belgeyi Gör</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card">
+						<div class="image"></div>
+						<div class="content mt-5">
+							<h1>Yasin Çetin</h1>
+							<p>Staj Onay Belgesi.</p>
+							<div class="btn btn-outline dark">Belgeyi Gör</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card">
+						<div class="image"></div>
+						<div class="content mt-5">
+							<h1>Yasin Çetin</h1>
+							<p>Staj Defteri.</p>
+							<div class="btn btn-outline dark">Belgeyi Gör</div>
+						</div>
+					</div>
+				</div>
+
+				
+			</div>
+			
+
+		</div>
+		
+	</div>
+</div>
 

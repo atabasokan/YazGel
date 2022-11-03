@@ -1,8 +1,7 @@
 ﻿
 body {
-    background: linear-gradient(-45deg, #ee7752, #EEEEEE, #FFE1E1, #90A17D);
+    background-color: #FFE1E1;
     background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
     height: 100vh;
 }
 
@@ -42,16 +41,3 @@ p {
     font-family: 'Raleway';
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
