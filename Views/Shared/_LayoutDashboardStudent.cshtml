@@ -82,12 +82,7 @@
                 </div>
                 <!-- Yan Menü -->
                 <ul class="nav" id="student_menu">
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" asp-area="" asp-controller="Student" asp-action="TimeLine">
-                            <i class="material-icons">loop</i>
-                            <p> Staj Durumu </p>
-                        </a>
-                    </li>
+
                     <li class="nav-item active " id="student_menu">
                         <a class="nav-link" asp-area="" asp-controller="Student" asp-action="stajBasvuruOlusturma">
                             <i class="material-icons">dashboard</i>
@@ -95,15 +90,27 @@
                         </a>
                     </li>
                     <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" asp-area="" asp-controller="Student" asp-action="stajBasvurularim">
+                        <a class="nav-link" asp-area="" asp-controller="Student" asp-action="stajBasvuruOnayiYukleme">
                             <i class="material-icons">dashboard</i>
-                            <p> Staj Başvurularım </p>
+                            <p> Onaylı Staj Başvuru Belgesi Yükleme </p>
                         </a>
                     </li>
                     <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" href="../examples/dashboard.html">
+                        <a class="nav-link" asp-area="" asp-controller="Student" asp-action="stajDefteriYukleme">
                             <i class="material-icons">dashboard</i>
-                            <p> Öğrenci </p>
+                            <p> stajDefteriYukleme </p>
+                        </a>
+                    </li>
+                    <li class="nav-item active " id="student_menu">
+                        <a class="nav-link" asp-area="" asp-controller="Student" asp-action="stajBasvurularim">
+                            <i class="material-icons">dashboard</i>
+                            <p> Staj Başvuru Belgelerim </p>
+                        </a>
+                    </li>
+                    <li class="nav-item active " id="student_menu">
+                        <a class="nav-link" asp-area="" asp-controller="Student" asp-action="TimeLine">
+                            <i class="material-icons">loop</i>
+                            <p> Staj Durumu </p>
                         </a>
                     </li>
                 </ul>
