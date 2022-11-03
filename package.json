@@ -44,8 +44,5 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-open": "^3.0.1"
-  },
-  "dependencies": {
-    "@ckeditor/ckeditor5-export-pdf": "^35.3.0"
   }
 }
