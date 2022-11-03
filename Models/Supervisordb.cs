@@ -157,6 +157,58 @@ namespace YazGel.Models
                 return (ex.Message.ToString());
             }
         }
+        public string EditSupervisor(Supervisor sv)
+        {
+            try
+            {
+                SqlCommand com = new SqlCommand("Edit_Supervisor", con);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Name", sv.Name);
+                com.Parameters.AddWithValue("@Surname", sv.Surname);
+                com.Parameters.AddWithValue("@No", sv.No);
+                com.Parameters.AddWithValue("@Pass", sv.Pass);
+                com.Parameters.AddWithValue("@Gender", sv.Gender);
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+                return ("Ok");
+
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                return (ex.Message.ToString());
+            }
+        }
+        public string EditStudent(Student stn)
+        {
+            try
+            {
+                SqlCommand com = new SqlCommand("Edit_Teacher", con);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Name", stn.Name);
+                com.Parameters.AddWithValue("@Surname", stn.Surname);
+                com.Parameters.AddWithValue("@No", stn.No);
+                com.Parameters.AddWithValue("@Pass", stn.Pass);
+                com.Parameters.AddWithValue("@Gender", stn.Gender);
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+                return ("Ok");
+
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                return (ex.Message.ToString());
+            }
+        }
         public string SaveSupervisor(Supervisor sv)
         {
 

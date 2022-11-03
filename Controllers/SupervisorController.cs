@@ -21,13 +21,9 @@ namespace YazGel.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-                var studentData = cdb.Students.ToList();
-                var teacherData = cdb.Teachers.ToList();
-                var supervisorData = cdb.Supervisors.ToList();
-            dynamic md = new ExpandoObject();
-            md.allTeacher = teacherData;
-            md.allSupervisor = supervisorData;
-            md.allStudent = studentData;
+            var studentData = cdb.Students.ToList();
+            var teacherData = cdb.Teachers.ToList();
+            var supervisorData = cdb.Supervisors.ToList();
             var userRole = HttpContext.Session.GetInt32("userRole");
             ViewBag.UserRole = userRole;
             if (userRole != 1 && userRole != 2)
@@ -39,7 +35,7 @@ namespace YazGel.Controllers
                 ViewBag.StudentData = studentData;
                 ViewBag.TeachersData = teacherData;
                 ViewBag.SupervisorsData = supervisorData;
-                return View(md);
+                return View();
             }
         }
 
@@ -182,66 +178,120 @@ namespace YazGel.Controllers
             }
             return RedirectToAction("Index", "Supervisor");
         }
-        //public async Task<IActionResult> EditSupervisor([Bind] Supervisor sv)
-        //{
-        //    var svId = HttpContext.Session.GetInt32("userId");
-        //    sv.Id = (int)svId;
+        public async Task<IActionResult> EditSupervisor()
+        {
+            var studentData = cdb.Students.ToList();
+            var teacherData = cdb.Teachers.ToList();
+            var supervisorData = cdb.Supervisors.ToList();
+            var userRole = HttpContext.Session.GetInt32("userRole");
+            ViewBag.UserRole = userRole;
+            if (userRole != 1 && userRole != 2)
+            {
+                return RedirectToAction("LogOut", "Login");
+            }
+            else
+            {
+                ViewBag.StudentData = studentData;
+                ViewBag.TeachersData = teacherData;
+                ViewBag.SupervisorsData = supervisorData;
+                return View();
+            }
+        }
+        public async Task<IActionResult> EditTeacher()
+        {
+            var studentData = cdb.Students.ToList();
+            var teacherData = cdb.Teachers.ToList();
+            var supervisorData = cdb.Supervisors.ToList();
+            var userRole = HttpContext.Session.GetInt32("userRole");
+            ViewBag.UserRole = userRole;
+            if (userRole != 1 && userRole != 2)
+            {
+                return RedirectToAction("LogOut", "Login");
+            }
+            else
+            {
+                ViewBag.StudentData = studentData;
+                ViewBag.TeachersData = teacherData;
+                ViewBag.SupervisorsData = supervisorData;
+                return View();
+            }
+        }
+        public async Task<IActionResult> EditStudent()
+        {
+            var studentData = cdb.Students.ToList();
+            var teacherData = cdb.Teachers.ToList();
+            var supervisorData = cdb.Supervisors.ToList();
+            var userRole = HttpContext.Session.GetInt32("userRole");
+            ViewBag.UserRole = userRole;
+            if (userRole != 1 && userRole != 2)
+            {
+                return RedirectToAction("LogOut", "Login");
+            }
+            else
+            {
+                ViewBag.StudentData = studentData;
+                ViewBag.TeachersData = teacherData;
+                ViewBag.SupervisorsData = supervisorData;
+                return View();
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditSupervisor([Bind] Supervisor sv)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    string res = dbop.EditSupervisor(sv);
+                }
 
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            string res = dbop.UpdatePassword(sv;
-        //        }
+            }
+            catch (System.Exception)
+            {
 
-        //    }
-        //    catch (System.Exception)
-        //    {
+                throw;
+            }
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditTeacher([Bind] Teacher tch)
+        {
 
-        //        throw;
-        //    }
-        //    return View();
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> EditTeacher([Bind] Teacher tch)
-        //{
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    string res = dbop.EditTeacher(tch);
+                }
 
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            string res = dbop.EditTeacher(tch);
-        //        }
+            }
+            catch (System.Exception)
+            {
 
-        //    }
-        //    catch (System.Exception)
-        //    {
+                throw;
+            }
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditStudent([Bind] Student stn)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    string res = dbop.EditStudent(stn);
+                }
 
-        //        throw;
-        //    }
-        //    return View();
-        //}
-        //public async Task<IActionResult> EditStudent([Bind] Student stn)
-        //{
-        //    var stnId = HttpContext.Session.GetInt32("userId");
-        //    stn.Id = (int)stnId;
+            }
+            catch (System.Exception)
+            {
 
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            string res = dbop.UpdatePassword(stn);
-        //        }
+                throw;
+            }
+            return View();
+        }
 
-        //    }
-        //    catch (System.Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //    return View();
-        //}
-
+        [HttpPost]
         public async Task<IActionResult> TeachertoStudent()
         {
             return View();
