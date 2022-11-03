@@ -19,6 +19,7 @@ namespace YazGel.Models
 
         public int role { get; set; }
         public Role Role { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
 
     }
 }
