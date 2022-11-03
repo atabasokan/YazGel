@@ -54,5 +54,25 @@ namespace YazGel.Controllers
             return View();
         }
 
+        public async Task<IActionResult> stajBasvuruOlusturma()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> stajBasvuruOnayiYukleme()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> stajDefteriYukleme()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> stajBasvurularim()
+        {
+            return View();
+        }
+
     }
 }

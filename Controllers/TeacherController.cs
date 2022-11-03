@@ -46,5 +46,10 @@ namespace YazGel.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> Ogrenciler()
+        {
+            return View();
+        }
     }
 }
