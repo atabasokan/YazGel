@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Komisyon Portalı";
+    Layout = "~/Views/Shared/_LayoutDashboardCommittee.cshtml";
+}
+
+<h1>Firmadan Başvuru Belgelerini Onaylayan Öğrenciler</h1>
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header card-header-rose card-header-icon">
+            <div class="card-icon">
+                <i class="material-icons">assignment</i>
+            </div>
+            <h4 class="card-title">Öğrenciler</h4>
+        </div>
+        <div class="card-body">
+            <div class="material-datatables">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th>İsim - Soy İsim</th>
+                            <th>Numara</th>
+                            <th>Onay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr>
+                                <td class="text-center"> #1 </td>
+                                <td>Ogrenci Adı</td>
+                                <td>Numarası</td>
+                            <td>
+                                <a type="button" rel="tooltip" id="#" class="btn btn-link btn-success btn-just-icon remove" data-toggle="tooltip" title="Onayla" href="#">
+                                    <i class="material-icons">add</i>
+                                </a>
+                                <a type="button" rel="tooltip" id="#" class="btn btn-link btn-danger btn-just-icon remove" data-toggle="tooltip" title="İptal Et" href="#">
+                                    <i class="material-icons">close</i>
+                                </a>
+                            </td>
+                            </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

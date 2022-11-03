@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 using YazGel.Models;
 
@@ -42,6 +43,18 @@ namespace YazGel.Controllers
 
                 throw;
             }
+            return View();
+        }
+
+        public async Task<IActionResult> FirmaOnaylıBelgeyeSahipOgrencilerListe()
+        {
+
+            return View();
+        }
+
+        public async Task<IActionResult> OgrenciyeOgretmenAtama()
+        {
+
             return View();
         }
     }
