@@ -209,7 +209,12 @@
 
 
                 var session = @ViewBag.UserRole;
-
+                if(session != 1 ){
+                    document.getElementById('editDel').style.display='none';
+                }
+                else{
+                    document.getElementById('delButton').style.display='none';
+                }
                 $sidebar = $('.sidebar');
 
                 $sidebar_img_container = $sidebar.find('.sidebar-background');

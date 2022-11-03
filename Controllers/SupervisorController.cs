@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Net.Mail;
 using System.Security.Cryptography;
@@ -20,18 +21,25 @@ namespace YazGel.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
+                var studentData = cdb.Students.ToList();
+                var teacherData = cdb.Teachers.ToList();
+                var supervisorData = cdb.Supervisors.ToList();
+            dynamic md = new ExpandoObject();
+            md.allTeacher = teacherData;
+            md.allSupervisor = supervisorData;
+            md.allStudent = studentData;
             var userRole = HttpContext.Session.GetInt32("userRole");
+            ViewBag.UserRole = userRole;
             if (userRole != 1 && userRole != 2)
             {
                 return RedirectToAction("LogOut", "Login");
             }
             else
             {
-                var studentData = cdb.Students.ToList();
                 ViewBag.StudentData = studentData;
-                var teacherData = cdb.Teachers.ToList();
                 ViewBag.TeachersData = teacherData;
-                return View();
+                ViewBag.SupervisorsData = supervisorData;
+                return View(md);
             }
         }
 
@@ -117,6 +125,122 @@ namespace YazGel.Controllers
             }
             return RedirectToAction("AddSupervisor", "Supervisor");
         }
+        [HttpGet]
+        public async Task<IActionResult> DeleteSupervisor([Bind] Supervisor sv)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    string res = dbop.DeleteSupervisor(sv);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = ex.Message;
+            }
+            return RedirectToAction("Index", "Supervisor");
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeleteTeacher([Bind] Teacher tch)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    string res = dbop.DeleteTeacher(tch);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = ex.Message;
+            }
+            return RedirectToAction("Index", "Supervisor");
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeleteStudent([Bind] Student st)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    string res = dbop.DeleteStudent(st);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = ex.Message;
+            }
+            return RedirectToAction("Index", "Supervisor");
+        }
+        //public async Task<IActionResult> EditSupervisor([Bind] Supervisor sv)
+        //{
+        //    var svId = HttpContext.Session.GetInt32("userId");
+        //    sv.Id = (int)svId;
+
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            string res = dbop.UpdatePassword(sv;
+        //        }
+
+        //    }
+        //    catch (System.Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //    return View();
+        //}
+        //[HttpPost]
+        //public async Task<IActionResult> EditTeacher([Bind] Teacher tch)
+        //{
+
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            string res = dbop.EditTeacher(tch);
+        //        }
+
+        //    }
+        //    catch (System.Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //    return View();
+        //}
+        //public async Task<IActionResult> EditStudent([Bind] Student stn)
+        //{
+        //    var stnId = HttpContext.Session.GetInt32("userId");
+        //    stn.Id = (int)stnId;
+
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            string res = dbop.UpdatePassword(stn);
+        //        }
+
+        //    }
+        //    catch (System.Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //    return View();
+        //}
 
         public async Task<IActionResult> TeachertoStudent()
         {
