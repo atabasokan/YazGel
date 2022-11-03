@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using System;
 using System.Threading.Tasks;
 using YazGel.Models;
 
@@ -56,6 +56,27 @@ namespace YazGel.Controllers
 
         public async Task<IActionResult> stajBasvuruOlusturma()
         {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> stajBasvuruOlusturma([Bind] Internship intern)
+        {
+            Documents doc = new Documents();
+            doc.InternshipId = (int)intern.Id;
+            doc.StudentId = (int)HttpContext.Session.GetInt32("userId");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    string res = dbop.CreateInternship(intern);
+                    string res2 = dbop.CreateDocument(doc);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
             return View();
         }
 

@@ -8,22 +8,20 @@ namespace YazGel.Models
 {
     public class Internship
     {
+        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string TC { get; set; }
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
         public string Mail { get; set; }
         public string Address { get; set; }
 
         [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public string Start { get; set; }
         [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public string End { get; set; }
+        public string EndDate { get; set; }
         public bool SSK { get; set; }
         public bool GSS { get; set; }
         public bool Age { get; set; }
@@ -34,7 +32,6 @@ namespace YazGel.Models
         public string ComAddress { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string ComPhoneNumber { get; set; }
         public string ComMail { get; set; }
         public string ComAdmin { get; set; }
