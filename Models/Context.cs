@@ -51,5 +51,8 @@ namespace YazGel.Models
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Supervisor> Supervisors { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<DocumentProgress> DocumentProgress { get; set; }
+        public DbSet<Documents> Documents { get; set; }
+        public DbSet<Internship> Internships { get; set; }
     }
 }

@@ -11,9 +11,14 @@ namespace YazGel.Controllers
     {
         Context cdb = new Context();
         Teacherdb dbop = new Teacherdb();
+        Studentdb dbops = new Studentdb();
+
         [Authorize]
         public async Task<IActionResult> Index()
         {
+
+            var studentData = cdb.Students.Where(w => w.ProgressId == 2).ToList();
+            ViewBag.StudentProgressData = studentData;
             var type = HttpContext.Session.GetString("teacherType");
             if (type != "True")
             {
@@ -48,8 +53,18 @@ namespace YazGel.Controllers
 
         public async Task<IActionResult> FirmaOnaylıBelgeyeSahipOgrencilerListe()
         {
-
+            var studentData = cdb.Students.Where(w => w.ProgressId == 2).ToList();
+            ViewBag.StudentProgressData = studentData;
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> FirmaOnaylıBelgeyeSahipOgrencilerListe(int stnId)
+        {
+            Student stn = new Student();
+            stn.Id = stnId ;
+            stn.ProgressId = 3;
+            string res3 = dbops.UpdateProgress(stn);
+            return RedirectToAction("FirmaOnaylıBelgeyeSahipOgrencilerListe", "Committee");
         }
 
         public async Task<IActionResult> OgrenciyeOgretmenAtama()

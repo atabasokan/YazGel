@@ -24,6 +24,7 @@ namespace YazGel.Models
                 com.Parameters.AddWithValue("@Pass", stn.Pass);
                 com.Parameters.AddWithValue("@Gender", stn.Gender);
                 com.Parameters.AddWithValue("@Role", "4");
+                com.Parameters.AddWithValue("@ProgressId", 1);
                 con.Open();
                 com.ExecuteNonQuery();
                 con.Close();
@@ -48,6 +49,29 @@ namespace YazGel.Models
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@NewPass", stn.NewPass);
                 com.Parameters.AddWithValue("@StudentId", stn.studentId);
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+                return ("Ok");
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                return (ex.Message.ToString());
+            }
+        }
+        public string UpdateProgress (Student stn)
+        {
+            try
+            {
+                SqlCommand com = new SqlCommand("Update_Progress", con);
+
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Id", stn.Id);
+                com.Parameters.AddWithValue("@ProgressId", stn.ProgressId);
                 con.Open();
                 com.ExecuteNonQuery();
                 con.Close();

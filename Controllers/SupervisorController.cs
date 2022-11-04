@@ -182,7 +182,7 @@ namespace YazGel.Controllers
         {
             var studentData = cdb.Students.ToList();
             var teacherData = cdb.Teachers.ToList();
-            var supervisorData = cdb.Supervisors.ToList().Where(w => w.role == 2);
+            var supervisorData = cdb.Supervisors.Where(w => w.role == 2).ToList();
             var userRole = HttpContext.Session.GetInt32("userRole");
             ViewBag.UserRole = userRole;
             if (userRole != 1 && userRole != 2)
@@ -191,9 +191,9 @@ namespace YazGel.Controllers
             }
             else
             {
-                ViewBag.StudentData = studentData;
-                ViewBag.TeachersData = teacherData;
                 ViewBag.SupervisorsData = supervisorData;
+                ViewBag.TeachersData = teacherData;
+                ViewBag.StudentsData = studentData;
                 return View();
             }
         }
@@ -201,7 +201,7 @@ namespace YazGel.Controllers
         {
             var studentData = cdb.Students.ToList();
             var teacherData = cdb.Teachers.ToList();
-            var supervisorData = cdb.Supervisors.ToList().Where(w => w.Id == 2);
+            var supervisorData = cdb.Supervisors.Where(w => w.role == 2).ToList();
             var userRole = HttpContext.Session.GetInt32("userRole");
             ViewBag.UserRole = userRole;
             if (userRole != 1 && userRole != 2)
@@ -210,9 +210,9 @@ namespace YazGel.Controllers
             }
             else
             {
-                ViewBag.StudentData = studentData;
-                ViewBag.TeachersData = teacherData;
                 ViewBag.SupervisorsData = supervisorData;
+                ViewBag.TeachersData = teacherData;
+                ViewBag.StudentsData = studentData;
                 return View();
             }
         }
@@ -220,7 +220,7 @@ namespace YazGel.Controllers
         {
             var studentData = cdb.Students.ToList();
             var teacherData = cdb.Teachers.ToList();
-            var supervisorData = cdb.Supervisors.ToList().Where(w => w.Id == 2);
+            var supervisorData = cdb.Supervisors.Where(w => w.role == 2).ToList();
             var userRole = HttpContext.Session.GetInt32("userRole");
             ViewBag.UserRole = userRole;
             if (userRole != 1 && userRole != 2)
@@ -229,9 +229,9 @@ namespace YazGel.Controllers
             }
             else
             {
-                ViewBag.StudentData = studentData;
-                ViewBag.TeachersData = teacherData;
                 ViewBag.SupervisorsData = supervisorData;
+                ViewBag.TeachersData = teacherData;
+                ViewBag.StudentsData = studentData;
                 return View();
             }
         }
