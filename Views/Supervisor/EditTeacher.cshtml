@@ -39,7 +39,7 @@
                                             <td>@item.No</td>
                                             <td>@item.Pass</td>
                                             <td class="td-actions text-center" id="editDel">
-                                                <a type="button" id="modalShow" class="btn btn-link btn-warning btn-just-icon edit" data-toggle="modal" data-target="#exampleModalLong" title="Düzenle">
+                                                <a type="button id="modalShow" class="btn btn-link btn-warning btn-just-icon edit" data-toggle="modal" data-target="#exampleModalLong" title="Düzenle">
                                                     <i class="material-icons">edit</i>
                                                 </a>
                                                 <a type="button" rel="tooltip" id="delButton" class="btn btn-link btn-danger btn-just-icon remove" data-toggle="tooltip" title="Sil" href="/Supervisor/DeleteTeacher/@item.Id">
@@ -64,16 +64,16 @@
                                             {
                                                 <div class="modal-body">
                                                     <label for="Name" class="bmd-label-floating">Ad</label>
-                                                    <input asp-for="Name" type="password" class="form-control" id="Name" required="" aria-required="true">
+                                                    <input asp-for="Name" type="text" class="form-control" id="Name" required="" aria-required="true">
 
                                                     <label for="Surname" class="bmd-label-floating">Soyad</label>
-                                                    <input asp-for="Surname" type="password" class="form-control" id="Surname" required="" aria-required="true">
+                                                    <input asp-for="Surname" type="text" class="form-control" id="Surname" required="" aria-required="true">
 
                                                     <label for="No" class="bmd-label-floating">No</label>
-                                                    <input asp-for="No" type="password" class="form-control" id="No" required="" aria-required="true">
+                                                    <input asp-for="No" type="text" class="form-control" id="No" required="" aria-required="true">
 
                                                     <label for="Pass" class="bmd-label-floating">Şifre</label>
-                                                    <input asp-for="Pass" type="password" class="form-control" id="Pass" required="" aria-required="true">
+                                                    <input asp-for="Pass" type="text" class="form-control" id="Pass" required="" aria-required="true">
 
                                                     <label for="Type" class="bmd-label-floating">Rol</label>
                                                     <select asp-for="Type" class="form-control dropdown-toggle" id="Type" title="Cinsiyet" autocomplete="off">

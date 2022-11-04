@@ -138,7 +138,7 @@ namespace YazGel.Controllers
             {
                 TempData["msg"] = ex.Message;
             }
-            return RedirectToAction("Index", "Supervisor");
+            return RedirectToAction("EditSupervisor", "Supervisor");
         }
         [HttpGet]
         public async Task<IActionResult> DeleteTeacher([Bind] Teacher tch)
@@ -157,7 +157,7 @@ namespace YazGel.Controllers
             {
                 TempData["msg"] = ex.Message;
             }
-            return RedirectToAction("Index", "Supervisor");
+            return RedirectToAction("EditTeacher", "Supervisor");
         }
         [HttpGet]
         public async Task<IActionResult> DeleteStudent([Bind] Student st)
