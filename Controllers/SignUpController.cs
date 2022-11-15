@@ -39,7 +39,15 @@ namespace YazGel.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    
+                    if (cdb.Students.Any(a => a.Name == stn.Name && a.Surname == stn.Surname))
+                    {
+                        ViewBag.Error =  "İsmi girilen kullanıcı zaten kayıtlı.";
+                        ModelState.Clear();
+                        return View();
+                    }
+                    else
+                    {
+
                     string no = "20220" + cno;
                     stn.No = no;
                     string Pass = GetRandomAlphanumericString();
@@ -84,6 +92,9 @@ namespace YazGel.Controllers
                     smtp.Credentials = credential;
                     //Send Mail
                     smtp.Send(mailMessage);
+                    ModelState.Clear();
+
+                    }
 
                 }
 
