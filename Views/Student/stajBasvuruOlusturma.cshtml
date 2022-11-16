@@ -3,249 +3,249 @@
     Layout = "~/Views/Shared/_LayoutDashboardStudent.cshtml";
 }
 @model YazGel.Models.Internship
-<div class="container">
-            <fieldset>
-    @using (Html.BeginForm("stajBasvuruOlusturma", "Student", FormMethod.Post, new { enctype = "multipart/form-daya" }))
-    {
+<div class="container col-lg-12" style="text-align: -webkit-center;">
+    <fieldset>
+        @using (Html.BeginForm("stajBasvuruOlusturma", "Student", FormMethod.Post, new { enctype = "multipart/form-daya" }))
+        {
 
-                <!-- Form Name -->
-                <legend>Staj Başvuru Sayfası</legend>
+            <!-- Form Name -->
+            <legend>Staj Başvuru Sayfası</legend>
 
-                <!-- Text input-->
+            <!-- Text input-->
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">İsim</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <div class="form-group">
+                <label class="col-md-4 control-label">İsim</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input asp-for="Name" name="Name" placeholder="İsim" class="form-control" type="text" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Text input-->
+            <!-- Text input-->
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Soy İsim</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Soy İsim</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input asp-for="Surname" name="Surname" placeholder="Soy İsim" class="form-control" type="text" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">TC Kimlik</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <div class="form-group">
+                <label class="col-md-4 control-label">TC Kimlik</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input asp-for="TC" name="TC" placeholder="Tc" class="form-control" type="number" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Mail Adresi</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Mail Adresi</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                         <input asp-for="Mail" name="Mail" placeholder="E-Mail" class="form-control" type="text" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Text input-->
+            <!-- Text input-->
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Telefon</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Telefon</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                         <input asp-for="PhoneNumber" name="PhoneNumber" placeholder="0(539) 999 9999" class="form-control" type="text" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Öğrenci Adresi</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Öğrenci Adresi</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                         <input asp-for="Address" name="Address" placeholder="Adres" class="form-control" type="text" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="date" class="col-md-4 control-label">Staj Başlangıç Tarihi</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <div class="form-group">
+                <label for="date" class="col-md-4 control-label">Staj Başlangıç Tarihi</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                         <input asp-for="Start" name="Start" placeholder="Başlangıç Tarihi" class="form-control" type="date" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="date" class="col-md-4 control-label">Staj Bitiş Tarihi</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <div class="form-group">
+                <label for="date" class="col-md-4 control-label">Staj Bitiş Tarihi</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                         <input asp-for="EndDate" name="EndDate" placeholder="Bitiş Tarihi" class="form-control" type="date" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-               @* <div class="form-group">
-                    <label class="col-md-4 control-label">Staj Gün Sayısı</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                            <input name="company" placeholder="Kaç İş Günü" class="form-control" type="number">
-                        </div>
-                    </div>
-                </div>*@
+            @* <div class="form-group">
+        <label class="col-md-4 control-label">Staj Gün Sayısı</label>
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+        <input name="company" placeholder="Kaç İş Günü" class="form-control" type="number">
+        </div>
+        </div>
+        </div>*@
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Aileden SSK Alıyor Mu?</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                            <select asp-for="SSK" class="">
-                                <option value="true">
-                                    Evet
-                                </option>
-                                <option value="false">
-                                    Hayır
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Genel Sağlık Ödüyor Musun?</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                            <select asp-for="GSS" class="">
-                                <option value="true">
-                                    Evet
-                                </option>
-                                <option value="false">
-                                    Hayır
-                                </option>
-                            </select>
-                        </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Aileden SSK Alıyor Mu?</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group" style="place-content:center;">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <select asp-for="SSK" class="" style="border: none;width: 50%;text-align: center;">
+                            <option value="true">
+                                Evet
+                            </option>
+                            <option value="false">
+                                Hayır
+                            </option>
+                        </select>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">25 Yaşını Doldurdun Mu?</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                            <select asp-for="Age" class="">
-                                <option value="true">
-                                    Evet
-                                </option>
-                                <option value="false">
-                                    Hayır
-                                </option>
-                            </select>
-                        </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Genel Sağlık Ödüyor Musun?</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group" style="place-content:center;">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <select asp-for="GSS" class="" style="border: none;width: 50%;text-align: center;">
+                            <option value="true">
+                                Evet
+                            </option>
+                            <option value="false">
+                                Hayır
+                            </option>
+                        </select>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Devlet Katksından Yararlanmak İstiyorum?</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                            <select asp-for="Gov" class="">
-                                <option value="true">
-                                    Evet
-                                </option>
-                                <option value="false">
-                                    Hayır
-                                </option>
-                            </select>
-                        </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">25 Yaşını Doldurdun Mu?</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group" style="place-content:center;">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <select asp-for="Age" class="" style="border: none;width: 50%;text-align: center;">
+                            <option value="true">
+                                Evet
+                            </option>
+                            <option value="false">
+                                Hayır
+                            </option>
+                        </select>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Firma Adı</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Devlet Katksından Yararlanmak İstiyorum?</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group" style="place-content:center;">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <select asp-for="Gov" class="" style="border: none;width: 50%;text-align: center;">
+                            <option value="true">
+                                Evet
+                            </option>
+                            <option value="false">
+                                Hayır
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Firma Adı</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                         <input asp-for="ComName" name="ComName" placeholder="Firma" class="form-control" type="text" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Firma Faaliyet Alanı</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Firma Faaliyet Alanı</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                         <input asp-for="ComBuss" name="ComBuss" placeholder="Firma" class="form-control" type="text" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Firma Tel</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                            <input asp-for="ComPhoneNumber" name="ComPhoneNumber" placeholder="0(539) 999 9999" class="form-control" type="text"/>
-                        </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Firma Tel</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <input asp-for="ComPhoneNumber" name="ComPhoneNumber" placeholder="0(539) 999 9999" class="form-control" type="text" />
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Firma Mail</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Firma Mail</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                         <input asp-for="ComMail" name="ComMail" placeholder="E-Mail" class="form-control" type="email" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Firma Yetkilisinin Adı Soyadı</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Firma Yetkilisinin Adı Soyadı</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                         <input asp-for="ComAdmin" name="ComAdmin" placeholder="İsim - Soy isim" class="form-control" type="text" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Staj Adresi</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Staj Adresi</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                         <input asp-for="ComAddress" name="ComAddress" placeholder="Adres" class="form-control" type="text" />
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label"></label>
-                    <div class="col-md-4">
-                        <input type="submit" class="btn btn-light btn-outline-dark" value="Oluştur"/><span class="glyphicon glyphicon-send"></span>
-                    </div>
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <input type="submit" class="btn btn-light btn-outline-dark" value="Oluştur" /><span class="glyphicon glyphicon-send"></span>
                 </div>
+            </div>
 
-    }
-            </fieldset>
+        }
+    </fieldset>
 </div>
 
 <script>

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using YazGel.Models;
 using System.IO;
 using System.Collections.Generic;
+using DotNetOpenAuth.OpenId;
 
 namespace YazGel.Controllers
 {
@@ -81,11 +82,17 @@ namespace YazGel.Controllers
                     var IId = cdb.Internships.OrderByDescending(p => p.Id).FirstOrDefault();
                     doc.InternshipId = IId.Id;
                     string res2 = dbop.CreateDocument(doc);
+                    intern.Id = IId.Id;
                 }
                 Student stn = new Student();
                 stn.Id = doc.StudentId;
                 stn.ProgressId = 1;
                 string res3 = dbop.UpdateProgress(stn);
+
+                
+                CreatePdf pdf = new CreatePdf();
+                byte[] bytes = pdf.Pdf(intern);
+                return File(bytes, "application/pdf");
             }
             catch (Exception ex)
             {
