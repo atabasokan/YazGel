@@ -32,7 +32,7 @@ namespace YazGel.Controllers
             }
         }
 
-        public async Task<IActionResult> Info([Bind]ChangePass tch)
+        public async Task<IActionResult> Info([Bind] ChangePass tch)
         {
             var Id = HttpContext.Session.GetInt32("userId");
             tch.Id = (int)Id;
@@ -54,7 +54,7 @@ namespace YazGel.Controllers
         }
         public async Task<IActionResult> FirmaOnaylıBelgeyeSahipOgrencilerListe(int stnId)
         {
-            if(stnId != 0)
+            if (stnId != 0)
             {
                 Student stn = new Student();
                 stn.Id = stnId;
@@ -64,9 +64,26 @@ namespace YazGel.Controllers
             }
             else
             {
-            var studentData = cdb.Students.Where(w => w.ProgressId == 2).ToList();
-            ViewBag.StudentProgressData = studentData;
-            return View();
+                var studentData = cdb.Students.Where(w => w.ProgressId == 2).ToList();
+                ViewBag.StudentProgressData = studentData;
+                return View();
+            }
+        }
+        public async Task<IActionResult> StajDefteriYukleyenOgrencilerListe(int stnId)
+        {
+            if (stnId != 0)
+            {
+                Student stn = new Student();
+                stn.Id = stnId;
+                stn.ProgressId = 5;
+                string res3 = dbop2.UpdateProgress(stn);
+                return RedirectToAction("StajDefteriYukleyenOgrencilerListe", "Committee");
+            }
+            else
+            {
+                var studentData = cdb.Students.Where(w => w.ProgressId == 4).ToList();
+                ViewBag.StudentProgressData = studentData;
+                return View();
             }
         }
 
