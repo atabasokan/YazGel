@@ -35,7 +35,7 @@
                                                 <td>@item.Name  </td>
                                                 <td>@item.Surname</td>
                                                 <td class="td-actions text-center" id="addTeacher">
-                                                    <a type="button" class="btn btn-outline-dark" asp-controller="Supervisor" asp-action="TeachertoStudent" asp-route-tId="@item.Id" value="@item.Id" >Öğretmen Ata</a>
+                                                    <a type="button" class="btn btn-outline-dark" asp-controller="Committee" asp-action="OgrenciyeOgretmenAtama" asp-route-tId="@item.Id" value="@item.Id" >Öğretmen Ata</a>
                                                 </td>
                                             </tr>
                                     }
@@ -48,6 +48,3 @@
         </div>
     </div>
 </div>
-@section javascript{
-}
-

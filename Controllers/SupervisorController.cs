@@ -321,7 +321,7 @@ namespace YazGel.Controllers
             {
                 HttpContext.Session.SetInt32("StnId", stnId);
             }
-            var teacherData = cdb.Teachers.ToList();
+            var teacherData = cdb.Teachers.Where(w => w.Type == false).ToList();
             ViewBag.TeachersData = teacherData;
             if (tId != 0)
             {
@@ -343,6 +343,10 @@ namespace YazGel.Controllers
             var sId = HttpContext.Session.GetInt32("StnId");
             stnId = (int)sId;
             string res = dbop.ClearStudent(stnId);
+            Student stn = new Student();
+            stn.Id = stnId;
+            stn.ProgressId = 4;
+            string res2 = dbop2.UpdateProgress(stn);
             return RedirectToAction("Students", "Supervisor");
         }
         public static string GetRandomAlphanumericString()

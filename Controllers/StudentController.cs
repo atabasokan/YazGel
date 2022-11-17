@@ -116,7 +116,7 @@ namespace YazGel.Controllers
         {
             var userId = HttpContext.Session.GetInt32("userId");
             string wwwPath = this.Environment.WebRootPath;
-            string path = Path.Combine(this.Environment.WebRootPath, "pdf");
+            string path = Path.Combine(this.Environment.WebRootPath, "pdf/"+userId);
             if (!Directory.Exists(path))
             {
 

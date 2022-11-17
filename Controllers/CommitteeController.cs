@@ -81,8 +81,8 @@ namespace YazGel.Controllers
             }
             else
             {
-                var studentData = cdb.Students.Where(w => w.ProgressId == 4).ToList();
-                ViewBag.StudentProgressData = studentData;
+                var studentData = cdb.Students.Where(w => w.ProgressId == 4 || w.ProgressId == 5).ToList();
+                ViewBag.StudentProgressData2 = studentData;
                 return View();
             }
         }
@@ -93,7 +93,7 @@ namespace YazGel.Controllers
             {
                 HttpContext.Session.SetInt32("StnId", stnId);
             }
-            var teacherData = cdb.Teachers.ToList();
+            var teacherData = cdb.Teachers.Where(w => w.Type == false).ToList();
             ViewBag.TeachersData = teacherData;
             if (tId != 0)
             {
@@ -104,9 +104,22 @@ namespace YazGel.Controllers
                 stn.Id = stnId;
                 stn.ProgressId = 5;
                 string res2 = dbop2.UpdateProgress(stn);
-                return RedirectToAction("OgrenciyeOgretmenAtama", "Committee");
+                return RedirectToAction("StajDefteriYukleyenOgrencilerListe", "Committee");
             }
             return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> ClearStudent(int stnId)
+        {
+            HttpContext.Session.SetInt32("StnId", stnId);
+            var sId = HttpContext.Session.GetInt32("StnId");
+            stnId = (int)sId;
+            string res = dbop3.ClearStudent(stnId);
+            Student stn = new Student();
+            stn.Id = stnId;
+            stn.ProgressId = 4;
+            string res2 = dbop2.UpdateProgress(stn);
+            return RedirectToAction("StajDefteriYukleyenOgrencilerListe", "Committee");
         }
     }
 }
