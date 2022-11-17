@@ -181,6 +181,7 @@ namespace YazGel.Controllers
         {
             var userId = HttpContext.Session.GetInt32("userId");
             stn.Id = (int)userId;
+            string[] filepaths = Directory.GetFiles(Path.Combine(this.Environment.WebRootPath, "pdf/" + userId));
             return View();
         }
 
