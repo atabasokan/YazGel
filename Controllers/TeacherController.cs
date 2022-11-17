@@ -50,7 +50,8 @@ namespace YazGel.Controllers
 
         public async Task<IActionResult> Ogrenciler()
         {
-            var studentsListData = cdb.Students.ToList();
+            var tchId = HttpContext.Session.GetInt32("userId");
+            var studentsListData = cdb.Students.Where(w => w.TeacherId == tchId).ToList();
             ViewBag.studentsListData = studentsListData;
 
             return View();

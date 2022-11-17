@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Controllers\StudentController.cs~RFe875886.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\assets\css\material-dashboard.css" />
     <None Include="wwwroot\assets\css\material-dashboard.css.map" />
     <None Include="wwwroot\assets\css\material-dashboard.min.css" />
@@ -303,6 +307,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\internshipBook\" />
     <Folder Include="wwwroot\pdf\" />
   </ItemGroup>
 

@@ -18,7 +18,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th class="text-center">#</th>
+                            <th class="text-center">Id</th>
                             <th>İsim - Soy İsim</th>
                             <th>Numara</th>
                             <th>Onay</th>
@@ -27,19 +27,20 @@
                     <tbody>
                         @foreach (var item in ViewBag.StudentProgressData)
                         {
-                            
+
                             <tr>
                                 <td class="text-center">@item.Id</td>
                                 <td>@item.Name @item.Surname</td>
                                 <td>@item.No</td>
-                            <td>
-                                    <a type="button" rel="tooltip" id="#" class="btn btn-link btn-success btn-just-icon remove" data-toggle="tooltip" title="Onayla" href="/Committee/FirmaOnaylıBelgeyeSahipOgrencilerListe?@item.Id">
-                                    <i class="material-icons">check</i>
-                                </a>
-                                <a type="button" rel="tooltip" id="#" class="btn btn-link btn-danger btn-just-icon remove" data-toggle="tooltip" title="İptal Et" href="#">
-                                    <i class="material-icons">close</i>
-                                </a>
-                            </td>
+
+                                <td>
+                                    <a type="button" rel="tooltip" id="Check" asp-controller="Committee" asp-action="FirmaOnaylıBelgeyeSahipOgrencilerListe" asp-route-stnId="@item.Id" class="btn btn-link btn-success btn-just-icon remove" data-toggle="tooltip" title="Onayla">
+                                        <i class="material-icons">check</i>
+                                    </a>
+                                    <a type="button" rel="tooltip" id="#" class="btn btn-link btn-danger btn-just-icon remove" data-toggle="tooltip" title="İptal Et" href="#">
+                                        <i class="material-icons">close</i>
+                                    </a>
+                                </td>
                             </tr>
                         }
 

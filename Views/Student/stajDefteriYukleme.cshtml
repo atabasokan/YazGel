@@ -99,13 +99,16 @@
                 <h4>Select File here</h4>
             </header>
             <p>Files Supported: PDF, TEXT, DOC , DOCX</p>
-            <input type="file" hidden accept=".doc,.docx,.pdf" id="fileID" style="display:none;">
-            <button class="btn">Choose File</button>
+            <form method="post" enctype="multipart/form-data" asp-controller="Student" asp-action="stajDefteriYukleme">
+                <span>Select File:</span>
+                <input type="file" name="postedFiles" multiple >
+                <input type="submit" value="Upload" />
+            </form>
         </div>
 
     </div>
 </div>
-
+@*
 <script>
     const dropArea = document.querySelector(".drop_box"),
         button = dropArea.querySelector("button"),
@@ -121,14 +124,14 @@
     input.addEventListener("change", function (e) {
         var fileName = e.target.files[0].name;
         let filedata = `
-            <form action="" method="post">
-            <div class="form">
-            <h4>${fileName}</h4>
-            <input type="email" placeholder="Enter email upload file">
-            <button class="btn">Upload</button>
-            </div>
-            </form>`;
+                <form action="" method="post">
+                <div class="form">
+                <h4>${fileName}</h4>
+                <input type="email" placeholder="Enter email upload file">
+                <button class="btn">Upload</button>
+                </div>
+                </form>`;
         dropArea.innerHTML = filedata;
     });
 
-</script>
+</script>*@

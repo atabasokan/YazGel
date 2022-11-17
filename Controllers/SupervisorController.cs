@@ -17,6 +17,7 @@ namespace YazGel.Controllers
     {
         Context cdb = new Context();
         Supervisordb dbop = new Supervisordb();
+        Studentdb dbop2 = new Studentdb();
 
         [Authorize]
         public async Task<IActionResult> Index()
@@ -58,6 +59,67 @@ namespace YazGel.Controllers
                 throw;
             }
             return View();
+        }
+
+        public async Task<IActionResult> Teachers()
+        {
+            var studentData = cdb.Students.ToList();
+            var teacherData = cdb.Teachers.ToList();
+            var supervisorData = cdb.Supervisors.Where(w => w.role == 2).ToList();
+            var userRole = HttpContext.Session.GetInt32("userRole");
+            ViewBag.UserRole = userRole;
+            if (userRole != 1 && userRole != 2)
+            {
+                return RedirectToAction("LogOut", "Login");
+            }
+            else
+            {
+                ViewBag.SupervisorsData = supervisorData;
+                ViewBag.TeachersData = teacherData;
+                ViewBag.StudentsData = studentData;
+                return View();
+            }
+
+        }
+        public async Task<IActionResult> Students()
+        {
+            var studentData = cdb.Students.ToList();
+            var teacherData = cdb.Teachers.ToList();
+            var supervisorData = cdb.Supervisors.Where(w => w.role == 2).ToList();
+            var userRole = HttpContext.Session.GetInt32("userRole");
+            ViewBag.UserRole = userRole;
+            if (userRole != 1 && userRole != 2)
+            {
+                return RedirectToAction("LogOut", "Login");
+            }
+            else
+            {
+                ViewBag.SupervisorsData = supervisorData;
+                ViewBag.TeachersData = teacherData;
+                ViewBag.StudentsData = studentData;
+                return View();
+            }
+
+        }
+        public async Task<IActionResult> Supervisors()
+        {
+            var studentData = cdb.Students.ToList();
+            var teacherData = cdb.Teachers.ToList();
+            var supervisorData = cdb.Supervisors.Where(w => w.role == 2).ToList();
+            var userRole = HttpContext.Session.GetInt32("userRole");
+            ViewBag.UserRole = userRole;
+            if (userRole != 1 && userRole != 2)
+            {
+                return RedirectToAction("LogOut", "Login");
+            }
+            else
+            {
+                ViewBag.SupervisorsData = supervisorData;
+                ViewBag.TeachersData = teacherData;
+                ViewBag.StudentsData = studentData;
+                return View();
+            }
+
         }
         public async Task<IActionResult> AddTeacher()
         {
@@ -138,7 +200,7 @@ namespace YazGel.Controllers
             {
                 TempData["msg"] = ex.Message;
             }
-            return RedirectToAction("EditSupervisor", "Supervisor");
+            return RedirectToAction("Supervisors", "Supervisor");
         }
         [HttpGet]
         public async Task<IActionResult> DeleteTeacher([Bind] Teacher tch)
@@ -157,7 +219,7 @@ namespace YazGel.Controllers
             {
                 TempData["msg"] = ex.Message;
             }
-            return RedirectToAction("EditTeacher", "Supervisor");
+            return RedirectToAction("Teachers", "Supervisor");
         }
         [HttpGet]
         public async Task<IActionResult> DeleteStudent([Bind] Student st)
@@ -176,68 +238,28 @@ namespace YazGel.Controllers
             {
                 TempData["msg"] = ex.Message;
             }
-            return RedirectToAction("EditStudent", "Supervisor");
+            return RedirectToAction("Students", "Supervisor");
         }
-        public async Task<IActionResult> EditSupervisor()
+        public async Task<IActionResult> EditSupervisor(int svId)
         {
-            var studentData = cdb.Students.ToList();
-            var teacherData = cdb.Teachers.ToList();
-            var supervisorData = cdb.Supervisors.Where(w => w.role == 2).ToList();
-            var userRole = HttpContext.Session.GetInt32("userRole");
-            ViewBag.UserRole = userRole;
-            if (userRole != 1 && userRole != 2)
-            {
-                return RedirectToAction("LogOut", "Login");
-            }
-            else
-            {
-                ViewBag.SupervisorsData = supervisorData;
-                ViewBag.TeachersData = teacherData;
-                ViewBag.StudentsData = studentData;
-                return View();
-            }
+            HttpContext.Session.SetInt32("svId", svId);
+            return View();
         }
-        public async Task<IActionResult> EditTeacher()
+        public async Task<IActionResult> EditTeacher(int tchId)
         {
-            var studentData = cdb.Students.ToList();
-            var teacherData = cdb.Teachers.ToList();
-            var supervisorData = cdb.Supervisors.Where(w => w.role == 2).ToList();
-            var userRole = HttpContext.Session.GetInt32("userRole");
-            ViewBag.UserRole = userRole;
-            if (userRole != 1 && userRole != 2)
-            {
-                return RedirectToAction("LogOut", "Login");
-            }
-            else
-            {
-                ViewBag.SupervisorsData = supervisorData;
-                ViewBag.TeachersData = teacherData;
-                ViewBag.StudentsData = studentData;
-                return View();
-            }
+            HttpContext.Session.SetInt32("tchId", tchId);
+            return View();
         }
-        public async Task<IActionResult> EditStudent()
+        public async Task<IActionResult> EditStudent(int stnId)
         {
-            var studentData = cdb.Students.ToList();
-            var teacherData = cdb.Teachers.ToList();
-            var supervisorData = cdb.Supervisors.Where(w => w.role == 2).ToList();
-            var userRole = HttpContext.Session.GetInt32("userRole");
-            ViewBag.UserRole = userRole;
-            if (userRole != 1 && userRole != 2)
-            {
-                return RedirectToAction("LogOut", "Login");
-            }
-            else
-            {
-                ViewBag.SupervisorsData = supervisorData;
-                ViewBag.TeachersData = teacherData;
-                ViewBag.StudentsData = studentData;
-                return View();
-            }
+            HttpContext.Session.SetInt32("stnId", stnId);
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> EditSupervisor([Bind] Supervisor sv)
         {
+            var svId = HttpContext.Session.GetInt32("svId");
+            sv.Id = (int)svId;
             try
             {
                 if (ModelState.IsValid)
@@ -251,12 +273,13 @@ namespace YazGel.Controllers
 
                 throw;
             }
-            return View();
+            return RedirectToAction("Supervisors", "Supervisor");
         }
         [HttpPost]
         public async Task<IActionResult> EditTeacher([Bind] Teacher tch)
         {
-
+            var tchId = HttpContext.Session.GetInt32("tchId");
+            tch.Id = (int)tchId;
             try
             {
                 if (ModelState.IsValid)
@@ -270,11 +293,13 @@ namespace YazGel.Controllers
 
                 throw;
             }
-            return View();
+            return RedirectToAction("Teachers", "Supervisor");
         }
         [HttpPost]
         public async Task<IActionResult> EditStudent([Bind] Student stn)
         {
+            var stnId = HttpContext.Session.GetInt32("stnId");
+            stn.Id = (int)stnId;
             try
             {
                 if (ModelState.IsValid)
@@ -288,13 +313,37 @@ namespace YazGel.Controllers
 
                 throw;
             }
+            return RedirectToAction("Students", "Supervisor");
+        }
+        public async Task<IActionResult> TeachertoStudent(int stnId, int tId)
+        {
+            if (stnId != 0)
+            {
+                HttpContext.Session.SetInt32("StnId", stnId);
+            }
+            var teacherData = cdb.Teachers.ToList();
+            ViewBag.TeachersData = teacherData;
+            if (tId != 0)
+            {
+                var sId = HttpContext.Session.GetInt32("StnId");
+                stnId = (int)sId;
+                string res = dbop.TeachertoStudent(stnId, tId);
+                Student stn = new Student();
+                stn.Id = stnId;
+                stn.ProgressId = 5;
+                string res2 = dbop2.UpdateProgress(stn);
+            return RedirectToAction("Students", "Supervisor");
+            }
             return View();
         }
-
-        [HttpPost]
-        public async Task<IActionResult> TeachertoStudent()
+        [HttpGet]
+        public async Task<IActionResult> ClearStudent(int stnId)
         {
-            return View();
+            HttpContext.Session.SetInt32("StnId", stnId);
+            var sId = HttpContext.Session.GetInt32("StnId");
+            stnId = (int)sId;
+            string res = dbop.ClearStudent(stnId);
+            return RedirectToAction("Students", "Supervisor");
         }
         public static string GetRandomAlphanumericString()
         {

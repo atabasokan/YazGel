@@ -56,40 +56,19 @@ p {
 
 		<div class="container">
 			<div class="row">
+				@*@foreach(var item in ViewBag.documentData)
+				{
 				<div class="col">
 					<div class="card">
 						<div class="image"></div>
 						<div class="content mt-5">
-							<h1>Yasin Çetin</h1>
+							<h1>@item.Name</h1>
 							<p>Staj Başvuru Belgesi.</p>
 							<div class="btn btn-outline dark">Belgeyi Gör</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="col">
-					<div class="card">
-						<div class="image"></div>
-						<div class="content mt-5">
-							<h1>Yasin Çetin</h1>
-							<p>Staj Onay Belgesi.</p>
-							<div class="btn btn-outline dark">Belgeyi Gör</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col">
-					<div class="card">
-						<div class="image"></div>
-						<div class="content mt-5">
-							<h1>Yasin Çetin</h1>
-							<p>Staj Defteri.</p>
-							<div class="btn btn-outline dark">Belgeyi Gör</div>
-						</div>
-					</div>
-				</div>
-
-				
+				</div>	
+				}			*@
 			</div>
 			
 

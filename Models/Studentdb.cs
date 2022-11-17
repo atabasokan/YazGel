@@ -149,5 +149,31 @@ namespace YazGel.Models
                 return (ex.Message.ToString());
             }
         }
+        public string SelectDocuments (Student stn)
+        {
+            string doc = "";
+            try
+            {
+                SqlCommand com = new SqlCommand("Select_Documents", con);
+
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Id", stn.Id);
+                com.Parameters.Add("@FullName", SqlDbType.NVarChar).Direction = ParameterDirection.ReturnValue;
+                 
+                con.Open();
+                doc = com.Parameters["@FullName"].Value.ToString();
+                com.ExecuteNonQuery();
+                con.Close();
+                return(doc);
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                return (ex.Message.ToString());
+            }
+        }
     }
 }

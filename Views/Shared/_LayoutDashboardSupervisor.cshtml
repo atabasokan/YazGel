@@ -84,19 +84,19 @@
                 <!-- Yan Menü -->
                 <ul class="nav" id="supervisor_menu">
                     <li class="nav-item active " id="teacher_menu">
-                        <a class="nav-link" asp-area="" asp-controller="Supervisor" asp-action="EditSupervisor">
+                        <a class="nav-link" asp-area="" asp-controller="Supervisor" asp-action="Supervisors">
                             <i class="material-icons">dashboard</i>
                             <p> Yöneticiler </p>
                         </a>
                     </li>
                     <li class="nav-item active " id="teacher_menu">
-                        <a class="nav-link" asp-area="" asp-controller="Supervisor" asp-action="EditTeacher">
+                        <a class="nav-link" asp-area="" asp-controller="Supervisor" asp-action="Teachers">
                             <i class="material-icons">dashboard</i>
                             <p> Öğretmenler </p>
                         </a>
                     </li>
                     <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" asp-area="" asp-controller="Supervisor" asp-action="EditStudent">
+                        <a class="nav-link" asp-area="" asp-controller="Supervisor" asp-action="Students">
                             <i class="material-icons">dashboard</i>
                             <p> Öğrenciler </p>
                         </a>
@@ -111,12 +111,6 @@
                         <a class="nav-link" asp-area="" asp-controller="Supervisor" asp-action="AddTeacher">
                             <i class="material-icons">add</i>
                             <p> Öğretmen Ekle </p>
-                        </a>
-                    </li>
-                    <li class="nav-item active " id="student_menu">
-                        <a class="nav-link" asp-area="" asp-controller="Supervisor" asp-action="TeachertoStudent">
-                            <i class="material-icons">air</i>
-                            <p> Öğretmene Ata </p>
                         </a>
                     </li>
                 </ul>
@@ -213,6 +207,7 @@
         $(document).ready(function () {
             $().ready(function () {
 
+                @RenderSection("javascript",required:false);
 
                 var session = @ViewBag.UserRole;
                 $sidebar = $('.sidebar');

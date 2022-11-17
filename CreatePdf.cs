@@ -397,6 +397,22 @@ namespace YazGel
                 pdfPCell.BackgroundColor = BaseColor.WHITE;
                 pdfTable.AddCell(pdfPCell);
                 pdfTable.CompleteRow();
+                pdfTable.CompleteRow();
+                fontStyle = FontFactory.GetFont("Times New Roman", 9f, 1);
+                pdfPCell = new PdfPCell(new Phrase("İmza", fontStyle));
+                pdfPCell.Rowspan = toplamSutun;
+                pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                pdfPCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfPCell.BackgroundColor = BaseColor.WHITE;
+                pdfTable.AddCell(pdfPCell);
+                fontStyle = FontFactory.GetFont("Times New Roman", 9f, 0);
+                pdfPCell = new PdfPCell(new Phrase("", fontStyle));
+                pdfPCell.Rowspan = toplamSutun;
+                pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                pdfPCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfPCell.BackgroundColor = BaseColor.WHITE;
+                pdfTable.AddCell(pdfPCell);
+                pdfTable.CompleteRow();
 
             }
         }

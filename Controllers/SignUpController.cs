@@ -32,7 +32,7 @@ namespace YazGel.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string toEmail, [Bind]Student stn)
+        public async Task<IActionResult> Index(string toEmail, [Bind] Student stn)
         {
             string cno = (cdb.Students.Count() + 1).ToString();
             try
@@ -41,58 +41,59 @@ namespace YazGel.Controllers
                 {
                     if (cdb.Students.Any(a => a.Name == stn.Name && a.Surname == stn.Surname))
                     {
-                        ViewBag.Error =  "İsmi girilen kullanıcı zaten kayıtlı.";
+                        ViewBag.Error = "İsmi girilen kullanıcı zaten kayıtlı.";
                         ModelState.Clear();
                         return View();
                     }
                     else
                     {
 
-                    string no = "20220" + cno;
-                    stn.No = no;
-                    string Pass = GetRandomAlphanumericString();
-                    stn.Pass = Pass;
-                    string res = dbop.SaveRecord(stn);
+                        string no = "20220" + cno;
+                        stn.No = no;
+                        string Pass = GetRandomAlphanumericString();
+                        stn.Pass = Pass;
+                        stn.ProgressId = 0;
+                        string res = dbop.SaveRecord(stn);
 
-                    string mailBody = "<!DOCTYPE html>" +
-                                        "<html>" +
-                                            "<body style=\"background -color:#ff7f26; text-align:center;\">" +
-                                            "<h1 style=\"color:#051a80;\"> Kayıt Başarılı</h1>" +
-                                            "<h3>Sayın öğrencimiz "+ stn.Name +" "+stn.Surname+
-                                            ",</h3>"+
-                                            "<h3>Staj Başvuru/Takip sistemi için profilniz oluşturuldu. Gerekli bilgiler aşağıdadır.</h3>" +
-                                            "<h3>Numaranız: " + stn.No +
-                                            "</h3>"+
-                                            "<h3>Şifreniz: " + stn.Pass +
-                                            "</h3>"+
-                                            "</body>" +
-                                        "</html>";
-                    string mailTitle = "Staj Başvuru/Takip Sistemine Kayıt";
-                    string fromEmail = "yazgelkou@gmail.com";
-                    string mailSubject = "Staj Başvuru/Takip Sistemine Kayıt";
-                    string mailPass = "ntrxabzataybddat";
+                        string mailBody = "<!DOCTYPE html>" +
+                                            "<html>" +
+                                                "<body style=\"background -color:#ff7f26; text-align:center;\">" +
+                                                "<h1 style=\"color:#051a80;\"> Kayıt Başarılı</h1>" +
+                                                "<h3>Sayın öğrencimiz " + stn.Name + " " + stn.Surname +
+                                                ",</h3>" +
+                                                "<h3>Staj Başvuru/Takip sistemi için profilniz oluşturuldu. Gerekli bilgiler aşağıdadır.</h3>" +
+                                                "<h3>Numaranız: " + stn.No +
+                                                "</h3>" +
+                                                "<h3>Şifreniz: " + stn.Pass +
+                                                "</h3>" +
+                                                "</body>" +
+                                            "</html>";
+                        string mailTitle = "Staj Başvuru/Takip Sistemine Kayıt";
+                        string fromEmail = "yazgelkou@gmail.com";
+                        string mailSubject = "Staj Başvuru/Takip Sistemine Kayıt";
+                        string mailPass = "ntrxabzataybddat";
 
-                    //Mail Message
-                    MailMessage mailMessage = new MailMessage(new MailAddress(fromEmail, mailTitle), new MailAddress(toEmail));
-                    //Mail Content
-                    mailMessage.Subject = mailSubject;
-                    mailMessage.Body = mailBody;
-                    mailMessage.IsBodyHtml = true;
-                    //Server Details
-                    SmtpClient smtp = new SmtpClient();
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    //Credentials
-                    System.Net.NetworkCredential credential = new System.Net.NetworkCredential();
-                    credential.UserName = fromEmail;
-                    credential.Password = mailPass;
-                    smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = credential;
-                    //Send Mail
-                    smtp.Send(mailMessage);
-                    ModelState.Clear();
+                        //Mail Message
+                        MailMessage mailMessage = new MailMessage(new MailAddress(fromEmail, mailTitle), new MailAddress(toEmail));
+                        //Mail Content
+                        mailMessage.Subject = mailSubject;
+                        mailMessage.Body = mailBody;
+                        mailMessage.IsBodyHtml = true;
+                        //Server Details
+                        SmtpClient smtp = new SmtpClient();
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.Port = 587;
+                        smtp.EnableSsl = true;
+                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                        //Credentials
+                        System.Net.NetworkCredential credential = new System.Net.NetworkCredential();
+                        credential.UserName = fromEmail;
+                        credential.Password = mailPass;
+                        smtp.UseDefaultCredentials = false;
+                        smtp.Credentials = credential;
+                        //Send Mail
+                        smtp.Send(mailMessage);
+                        ModelState.Clear();
 
                     }
 
@@ -103,8 +104,8 @@ namespace YazGel.Controllers
             {
                 TempData["msg"] = ex.Message;
             }
-            
-            return RedirectToAction("Index","Login");
+
+            return RedirectToAction("Index", "Login");
 
         }
         public static string GetRandomAlphanumericString()

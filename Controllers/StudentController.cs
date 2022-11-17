@@ -3,12 +3,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using YazGel.Models;
 using System.IO;
 using System.Collections.Generic;
 using DotNetOpenAuth.OpenId;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using System.Security.Cryptography;
 
 namespace YazGel.Controllers
 {
@@ -26,7 +31,6 @@ namespace YazGel.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-
             var userRole = HttpContext.Session.GetInt32("userRole");
             ViewBag.UserRole = userRole;
             if (userRole != 4)
@@ -89,7 +93,7 @@ namespace YazGel.Controllers
                 stn.ProgressId = 1;
                 string res3 = dbop.UpdateProgress(stn);
 
-                
+
                 CreatePdf pdf = new CreatePdf();
                 byte[] bytes = pdf.Pdf(intern);
                 return File(bytes, "application/pdf");
@@ -99,7 +103,6 @@ namespace YazGel.Controllers
 
                 throw;
             }
-            return View();
         }
         [HttpGet]
         public async Task<IActionResult> stajBasvuruOnayiYukleme()
@@ -111,7 +114,7 @@ namespace YazGel.Controllers
         [RequestFormLimits(MultipartBodyLengthLimit = 104857600)]
         public async Task<IActionResult> stajBasvuruOnayiYukleme(List<IFormFile> postedFiles)
         {
-            var userRole = HttpContext.Session.GetInt32("userId");
+            var userId = HttpContext.Session.GetInt32("userId");
             string wwwPath = this.Environment.WebRootPath;
             string path = Path.Combine(this.Environment.WebRootPath, "pdf");
             if (!Directory.Exists(path))
@@ -129,20 +132,68 @@ namespace YazGel.Controllers
 
                     postedFile.CopyTo(stream);
                 }
-                    Student stn = new Student();
-                    stn.Id = (int)userRole;
-                    stn.ProgressId = 2;
-                    string res3 = dbop.UpdateProgress(stn);
+                Student stn = new Student();
+                stn.Id = (int)userId;
+                stn.ProgressId = 2;
+                string res3 = dbop.UpdateProgress(stn);
             }
             return View();
         }
         public async Task<IActionResult> stajDefteriYukleme()
         {
+            var stnId = HttpContext.Session.GetInt32("userId");
+            var infos = cdb.Students.FirstOrDefault(x => x.Id == stnId);
+            HttpContext.Session.SetInt32("pId", infos.ProgressId);
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> stajDefteriYukleme(List<IFormFile> postedFiles)
+        {
+            var pId = HttpContext.Session.GetInt32("pId");
+            if (pId == 3 && postedFiles.Count != 0)
+            {
+                var userId = HttpContext.Session.GetInt32("userId");
+                string wwwPath = this.Environment.WebRootPath;
+                string path = Path.Combine(this.Environment.WebRootPath, "internshipBook");
+                if (!Directory.Exists(path))
+                {
 
+                    Directory.CreateDirectory(path);
+
+
+                }
+                foreach (IFormFile postedFile in postedFiles)
+                {
+                    string fileName = Path.GetFileName(postedFile.FileName);
+                    using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                    {
+
+                        postedFile.CopyTo(stream);
+                    }
+                    Student stn = new Student();
+                    stn.Id = (int)userId;
+                    stn.ProgressId = 4;
+                    string res3 = dbop.UpdateProgress(stn);
+                }
+                return RedirectToAction("stajBasvurularim", "Student");
+            }
+            else
+            {
+                return RedirectToAction("stajBasvurularim", "Student");
+            }
+        }
         public async Task<IActionResult> stajBasvurularim()
         {
+
+            return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> stajBasvurularim(Student stn)
+        {
+            var userId = HttpContext.Session.GetInt32("userId");
+            stn.Id = (int)userId;
+            string res = dbop.SelectDocuments(stn);
+            ViewBag.documentData = res;
             return View();
         }
 

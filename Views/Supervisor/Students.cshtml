@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Yönetici Portalı";
+    Layout = "~/Views/Shared/_LayoutDashboardSupervisor.cshtml";
+}
+@model YazGel.Models.Student
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">assignment</i>
+                        </div>
+                        <h4 class="card-title">Öğrenciler</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="toolbar">
+                        </div>
+                        <div class="material-datatables">
+                            <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Id</th>
+                                        <th>İsim</th>
+                                        <th>Numara</th>
+                                        <th>Şifre</th>
+                                        <th class="text-center">Yönet</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.StudentsData)
+                                    {
+                                        if(item.TeacherId != null && item.ProgressId == 4)
+                                        {
+                                            <tr>
+                                                <td class="text-center">@item.Id</td>
+                                                <td>@item.Name @item.Surname </td>
+                                                <td>@item.No</td>
+                                                <td>@item.Pass</td>
+                                                <td class="td-actions text-center" id="editDel">
+                                                    <a type="button" rel="tooltip" class="btn btn-link btn-warning btn-just-icon edit" data-toggle="tooltip" title="Düzenle" asp-controller="Supervisor" asp-action="EditStudent" asp-route-stnId="@item.Id">
+                                                        <i class="material-icons">edit</i>
+                                                    </a>
+                                                    <a type="button" rel="tooltip" id="addTeacher" class="btn btn-link btn-primary btn-just-icon dangerous" data-toggle="tooltip" asp-controller="Supervisor" asp-action="ClearStudent" asp-route-stnId="@item.Id" title="Öğretmen Kaldır">
+                                                        <i class="material-icons">dangerous</i>
+                                                    </a>
+                                                    <a type="button" rel="tooltip" id="delButton" class="btn btn-link btn-danger btn-just-icon remove" data-toggle="tooltip" title="Sil" href="/Supervisor/DeleteStudent/@item.Id">
+                                                        <i class="material-icons">close</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                        else if(item.TeacherId == null && item.ProgressId == 4)
+                                        {
+                                            <tr>
+                                                <td class="text-center">@item.Id</td>
+                                                <td>@item.Name @item.Surname </td>
+                                                <td>@item.No</td>
+                                                <td>@item.Pass</td>
+                                                <td class="td-actions text-center" id="editDel">
+                                                    <a type="button" rel="tooltip" class="btn btn-link btn-warning btn-just-icon edit" data-toggle="tooltip" title="Düzenle" asp-controller="Supervisor" asp-action="EditStudent" asp-route-stnId="@item.Id">
+                                                        <i class="material-icons">edit</i>
+                                                    </a>
+                                                    <a type="button" rel="tooltip" id="addTeacher" class="btn btn-link btn-success btn-just-icon add" data-toggle="tooltip" asp-controller="Supervisor" asp-action="TeachertoStudent" asp-route-stnId="@item.Id" title="Öğretmen Ata">
+                                                        <i class="material-icons">add</i>
+                                                    </a>
+                                                    <a type="button" rel="tooltip" id="delButton" class="btn btn-link btn-danger btn-just-icon remove" data-toggle="tooltip" title="Sil" href="/Supervisor/DeleteStudent/@item.Id">
+                                                        <i class="material-icons">close</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section javascript{
+}
