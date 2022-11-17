@@ -1,19 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Hosting;
 using System;
-using System.Data.Entity;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using YazGel.Models;
-using System.IO;
-using System.Collections.Generic;
-using DotNetOpenAuth.OpenId;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using System.Security.Cryptography;
 
 namespace YazGel.Controllers
 {
@@ -116,7 +110,7 @@ namespace YazGel.Controllers
         {
             var userId = HttpContext.Session.GetInt32("userId");
             string wwwPath = this.Environment.WebRootPath;
-            string path = Path.Combine(this.Environment.WebRootPath, "pdf/"+userId);
+            string path = Path.Combine(this.Environment.WebRootPath, "pdf/" + userId);
             if (!Directory.Exists(path))
             {
 
@@ -182,18 +176,11 @@ namespace YazGel.Controllers
                 return RedirectToAction("stajBasvurularim", "Student");
             }
         }
-        public async Task<IActionResult> stajBasvurularim()
-        {
-
-            return View();
-        }
         [HttpGet]
         public async Task<IActionResult> stajBasvurularim(Student stn)
         {
             var userId = HttpContext.Session.GetInt32("userId");
             stn.Id = (int)userId;
-            string res = dbop.SelectDocuments(stn);
-            ViewBag.documentData = res;
             return View();
         }
 
