@@ -1,20 +1,29 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using System.Web.Providers.Entities;
 using YazGel.Models;
 
 namespace YazGel.Controllers
 {
     public class CommitteeController : Controller
     {
+        private IHostingEnvironment Environment;
+
+        public CommitteeController(IHostingEnvironment _environment)
+        {
+            Environment = _environment;
+        }
         Context cdb = new Context();
         Teacherdb dbop = new Teacherdb();
         Studentdb dbop2 = new Studentdb();
         Supervisordb dbop3 = new Supervisordb();
-
         [Authorize]
         public async Task<IActionResult> Index()
         {
@@ -108,6 +117,18 @@ namespace YazGel.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> Documents(int stnId)
+        {
+            HttpContext.Session.SetInt32("StnId", stnId);
+            string[] filepaths = Directory.GetFiles(Path.Combine(this.Environment.WebRootPath, "pdf/" + stnId));
+            List<Models.File> list = new List<Models.File>();
+            foreach (string file in filepaths)
+            {
+                list.Add(new Models.File { Name = Path.GetFileName(file) });
+            }
+            return View(list);
+
+        }
         [HttpGet]
         public async Task<IActionResult> ClearStudent(int stnId)
         {
@@ -120,6 +141,14 @@ namespace YazGel.Controllers
             stn.ProgressId = 4;
             string res2 = dbop2.UpdateProgress(stn);
             return RedirectToAction("StajDefteriYukleyenOgrencilerListe", "Committee");
+        }
+        public FileResult DownloadFile(int stnId, string filename)
+        {
+            var sId = HttpContext.Session.GetInt32("StnId");
+            stnId = (int)sId;
+            string path = Path.Combine(this.Environment.WebRootPath, "pdf/" + stnId + "/") + filename;
+            byte[] bytes = System.IO.File.ReadAllBytes(path);
+            return File(bytes, "application/octet-stream",filename);
         }
     }
 }

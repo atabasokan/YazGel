@@ -1,6 +1,7 @@
-﻿@{
-    ViewData["Title"] = "TeachertoStudent";
-    Layout = "~/Views/Shared/_LayoutDashboardSupervisor.cshtml";
+﻿@model IEnumerable<YazGel.Models.File>
+@{
+    ViewBag.Title = "Komisyon Portalı";
+    Layout = "~/Views/Shared/_LayoutDashboardTeacher.cshtml";
 }
 
 <div class="content">
@@ -12,7 +13,7 @@
                         <div class="card-icon">
                             <i class="material-icons">assignment</i>
                         </div>
-                        <h4 class="card-title">Öğretmenler</h4>
+                        <h4 class="card-title">Dosyalar</h4>
                     </div>
                     <div class="card-body">
                         <div class="toolbar">
@@ -21,23 +22,19 @@
                             <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                 <thead>
                                     <tr class="text-center">
-                                        <th class="text-center">Id</th>
-                                        <th>İsim</th>
-                                        <th>Soyisim</th>
+                                        <th>Dosya Adı</th>
                                         <th class="text-center">#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in ViewBag.TeachersData)
+                                    @foreach (File file in Model)
                                     {
-                                            <tr class="text-center">
-                                                <td class="text-center">@item.Id</td>
-                                                <td>@item.Name  </td>
-                                                <td>@item.Surname</td>
-                                                <td class="td-actions text-center" id="addTeacher">
-                                                    <a type="button" class="btn btn-outline-dark" asp-controller="Supervisor" asp-action="TeachertoStudent" asp-route-tId="@item.Id" value="@item.Id" >Öğretmen Ata</a>
-                                                </td>
-                                            </tr>
+                                        <tr class="text-center">
+                                            <td>@file.Name</td>
+                                            <td class="td-actions text-center" id="addTeacher">
+                                                <a type="button" class="btn btn-outline-dark" asp-controller="Committee" asp-action="DownloadFile" asp-route-filename="@file.Name" value="@file.Name">Dosya İndir</a>
+                                            </td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
@@ -48,5 +45,3 @@
         </div>
     </div>
 </div>
-@section javascript{
-}

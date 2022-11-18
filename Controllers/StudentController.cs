@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -148,7 +149,7 @@ namespace YazGel.Controllers
             {
                 var userId = HttpContext.Session.GetInt32("userId");
                 string wwwPath = this.Environment.WebRootPath;
-                string path = Path.Combine(this.Environment.WebRootPath, "internshipBook");
+                string path = Path.Combine(this.Environment.WebRootPath, "pdf/"+userId);
                 if (!Directory.Exists(path))
                 {
 
@@ -172,7 +173,7 @@ namespace YazGel.Controllers
                 return RedirectToAction("stajBasvurularim", "Student");
             }
             else
-            {
+            { 
                 return RedirectToAction("stajBasvurularim", "Student");
             }
         }
@@ -181,9 +182,21 @@ namespace YazGel.Controllers
         {
             var userId = HttpContext.Session.GetInt32("userId");
             stn.Id = (int)userId;
-            string[] filepaths = Directory.GetFiles(Path.Combine(this.Environment.WebRootPath, "pdf/" + userId));
-            return View();
+            string[] filepaths = Directory.GetFiles(Path.Combine(this.Environment.WebRootPath, "pdf/" + (int)userId));
+            List<Models.File> list = new List<Models.File>();
+            foreach(string file in filepaths)
+            {
+                list.Add(new Models.File { Name = Path.GetFileName(file) });
+            }
+            return View(list);
         }
+        public FileResult DownloadFile(string filename)
+        {
+            var userId = HttpContext.Session.GetInt32("userId");
+            string path = Path.Combine(this.Environment.WebRootPath, "pdf/"+(int)userId+"/")+filename;
+            byte[] bytes = System.IO.File.ReadAllBytes(path);
 
+            return File(bytes, "application/octet-stream", filename);
+        }
     }
 }
