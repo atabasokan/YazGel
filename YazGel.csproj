@@ -16,6 +16,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Landing.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Controllers\Landing.cshtml" />
+    <Content Remove="Views\Landing.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Controllers\StudentController.cs~RFe875886.TMP" />
   </ItemGroup>
 
