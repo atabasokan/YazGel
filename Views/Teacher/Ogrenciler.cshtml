@@ -25,22 +25,22 @@
                     <tbody>
                         @foreach (var item in ViewBag.studentsListData)
                         {
-                            <tr class="text-center">
-                                <td class="text-center">@item.Id</td>
-                                <td>@item.Name @item.Surname</td>
-                                <td>@item.No</td>
-                                <td class ="td-actions text-center" id="editDel">
+                                <tr class="text-center">
+                                    <td class="text-center">@item.Id</td>
+                                    <td>@item.Name @item.Surname</td>
+                                    <td>@item.No</td>
+                                    <td class="td-actions text-center" id="editDel">
                                         <a type="button" rel="tooltip" id="Download" asp-controller="Teacher" asp-action="Documents" asp-route-stnId="@item.Id" class="btn btn-link btn-info btn-just-icon south" data-toggle="tooltip" title="İndir">
                                             <i class="material-icons">south</i>
                                         </a>
-                                    <a type="button" rel="tooltip" id="check" asp-controller="Teacher" asp-action="Confirm" asp-route-conf="true" asp-route-stnId="@item.Id" class="btn btn-link btn-success btn-just-icon check" data-toggle="tooltip" title="Onayla">
+                                        <a type="button" rel="tooltip" id="check" asp-controller="Teacher" asp-action="Confirm" asp-route-conf="true" asp-route-stnId="@item.Id" class="btn btn-link btn-success btn-just-icon check" data-toggle="tooltip" title="Onayla">
                                             <i class="material-icons">check</i>
                                         </a>
-                                    <a type="button" rel="tooltip" id="remove" asp-controller="Teacher" asp-action="Confirm" asp-route-conf="false" asp-route-stnId="@item.Id" class="btn btn-link btn-danger btn-just-icon close" data-toggle="tooltip" title="Reddet">
+                                        <a type="button" rel="tooltip" id="remove" asp-controller="Teacher" asp-action="Confirm" asp-route-conf="false" asp-route-stnId="@item.Id" class="btn btn-link btn-danger btn-just-icon close" data-toggle="tooltip" title="Reddet">
                                             <i class="material-icons">close</i>
                                         </a>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                         }
                     </tbody>
 
