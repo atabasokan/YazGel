@@ -182,6 +182,12 @@ namespace YazGel.Controllers
         {
             var userId = HttpContext.Session.GetInt32("userId");
             stn.Id = (int)userId;
+            if(stn.ProgressId == 0)
+            {
+                ViewBag.Empty = 0;
+                return View();
+            }
+            ViewBag.Empty = 1;
             string[] filepaths = Directory.GetFiles(Path.Combine(this.Environment.WebRootPath, "pdf/" + (int)userId));
             List<Models.File> list = new List<Models.File>();
             foreach(string file in filepaths)
