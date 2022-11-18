@@ -20,6 +20,8 @@ namespace YazGel.Controllers
         }
         Context cdb = new Context();
         Teacherdb dbop = new Teacherdb();
+        Studentdb dbop2 = new Studentdb();
+        Supervisordb dbop3 = new Supervisordb();
 
         [Authorize]
         public async Task<IActionResult> Index()
@@ -94,19 +96,18 @@ namespace YazGel.Controllers
             if (conf == true)
             {
                 stn.ProgressId = 6;
-                stn.TeacherId = null;
-                return RedirectToAction("NotlandirilanOgrenciler", "Teacher");
+                string res = dbop2.UpdateProgress(stn);
+                string res2 = dbop3.ClearStudent(stnId);
+                return RedirectToAction("Ogrenciler", "Teacher");
             }
             else
             {
                 stn.ProgressId = 4;
-                stn.TeacherId = null;
-                return RedirectToAction("NotlandirilanOgrenciler", "Teacher");
+                string res = dbop2.UpdateProgress(stn);
+                string res2 = dbop3.ClearStudent(stnId);
+
+                return RedirectToAction("Ogrenciler", "Teacher");
             }
-        }
-        public async Task<IActionResult> NotlandirilanOgrenciler()
-        {
-            return View();
         }
     }
 }
